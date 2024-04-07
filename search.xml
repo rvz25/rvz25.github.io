@@ -4,11 +4,11 @@
   
     
     <entry>
-      <title>robots</title>
-      <link href="/2024/04/07/robots/"/>
-      <url>/2024/04/07/robots/</url>
+      <title>Injector</title>
+      <link href="/2024/04/07/injector/"/>
+      <url>/2024/04/07/injector/</url>
       
-        <content type="html"><![CDATA[<p><img src="/../images/robots.png" alt="alt text"></p><p>Challange Link from Cyber-EDU :<br><a href="https://app.cyber-edu.co/challenges/1e37bac0-44a5-11ed-b4d6-0f0819dfa676?tenant=cyberedu">https://app.cyber-edu.co/challenges/1e37bac0-44a5-11ed-b4d6-0f0819dfa676?tenant=cyberedu</a></p><h1 id="Robots-txt"><a href="#Robots-txt" class="headerlink" title="Robots.txt"></a>Robots.txt</h1><p>Robots.txt is a text file webmasters create to instruct web robots (typically search engine robots) how to crawl pages on their website. The robots.txt file is part of the the robots exclusion protocol (REP), a group of web standards that regulate how robots crawl the web, access and index content, and serve that content up to users. The REP also includes directives like meta robots, as well as page-, subdirectory-, or site-wide instructions for how search engines should treat links (such as “follow” or “nofollow”)</p><h1 id="Walktrough"><a href="#Walktrough" class="headerlink" title="Walktrough"></a>Walktrough</h1><p>First we paste the address we got in our browser and this is what we get :  </p><p><img src="/../images/image.png" alt="alt text"></p><p>With a tool named <code>nuclei</code> we found a directory <code>robots.txt</code> :</p><p><code>└─$ nuclei -u http://34.159.76.30:31714/ </code>  </p><p>Found:<br><code>[robots-txt-endpoint] [http] [info] http://34.159.76.30:31714/robots.txt</code></p><p>Let’s try to go into <code>/robots.txt</code> :</p><p><img src="/../images/Screenshot%202024-04-07%20at%2010.25.39.png" alt="alt text"></p><p>We found something interesting &#x2F;g00d_old_mus1c.php , if we dig deep and go into that let’s see what we find :</p><p><img src="/../images/Screenshot%202024-04-07%20at%2010.45.13.png" alt="alt text"></p><p>And we got the Flag : CTF{Kr4ftw3rk_4nd_th3_r0b0ts}</p>]]></content>
+        <content type="html"><![CDATA[<h1 id="Command-Injection"><a href="#Command-Injection" class="headerlink" title="Command Injection"></a>Command Injection</h1><p>Command injection is an attack in which the goal is execution of arbitrary commands on the host operating system via a vulnerable application. Command injection attacks are possible when an application passes unsafe user supplied data (forms, cookies, HTTP headers etc.) to a system shell.</p><h1 id="Walktrough"><a href="#Walktrough" class="headerlink" title="Walktrough"></a>Walktrough</h1><p>Browse to the IP Addres Given:</p><p><img src="/../images/injection.png" alt="alt text"></p><p>With the help of google we found a command injection to paste <code>(%20%0Acat%20|/bin/cat%20flag.php)</code> :</p><p><img src="/../images/injection2.png" alt="alt text"></p><p>→ View Page Source → We found the flag:<br>C0mm4nd_1nj3c5i0n_1s_E4sy</p><p><img src="/../images/flag.png" alt="alt text"></p>]]></content>
       
       
       
@@ -23,13 +23,19 @@
     
     
     <entry>
-      <title>Hello World</title>
-      <link href="/2024/04/07/hello-world/"/>
-      <url>/2024/04/07/hello-world/</url>
+      <title>robots</title>
+      <link href="/2024/04/07/robots/"/>
+      <url>/2024/04/07/robots/</url>
       
-        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+        <content type="html"><![CDATA[<p><img src="/../images/robots.png" alt="alt text"></p><p>Challange Link from Cyber-EDU :<br><a href="https://app.cyber-edu.co/challenges/1e37bac0-44a5-11ed-b4d6-0f0819dfa676?tenant=cyberedu">https://app.cyber-edu.co/challenges/1e37bac0-44a5-11ed-b4d6-0f0819dfa676?tenant=cyberedu</a></p><h1 id="Robots-txt"><a href="#Robots-txt" class="headerlink" title="Robots.txt"></a>Robots.txt</h1><p>Robots.txt is a text file webmasters create to instruct web robots (typically search engine robots) how to crawl pages on their website. The robots.txt file is part of the the robots exclusion protocol (REP), a group of web standards that regulate how robots crawl the web, access and index content, and serve that content up to users. The REP also includes directives like meta robots, as well as page-, subdirectory-, or site-wide instructions for how search engines should treat links (such as “follow” or “nofollow”)c</p><h1 id="Walktrough"><a href="#Walktrough" class="headerlink" title="Walktrough"></a>Walktrough</h1><p>First we paste the address we got in our browser and this is what we get :  </p><p><img src="/../images/image.png" alt="alt text"></p><p>With a tool named <code>nuclei</code> we found a directory <code>robots.txt</code> :</p><p><code>└─$ nuclei -u http://34.159.76.30:31714/ </code>  </p><p>Found:<br><code>[robots-txt-endpoint] [http] [info] http://34.159.76.30:31714/robots.txt</code></p><p>Let’s try to go into <code>/robots.txt</code> :</p><p><img src="/../images/Screenshot%202024-04-07%20at%2010.25.39.png" alt="alt text"></p><p>We found something interesting &#x2F;g00d_old_mus1c.php , if we dig deep and go into that let’s see what we find :</p><p><img src="/../images/Screenshot%202024-04-07%20at%2010.45.13.png" alt="alt text"></p><p>And we got the Flag : CTF{Kr4ftw3rk_4nd_th3_r0b0ts}</p>]]></content>
       
       
+      
+        <tags>
+            
+            <tag> ROCSC </tag>
+            
+        </tags>
       
     </entry>
     
