@@ -4,13 +4,19 @@
   
     
     <entry>
-      <title>Scripting</title>
+      <title>Cross-Site Scripting (XSS)</title>
       <link href="/2024/04/08/XSS/"/>
       <url>/2024/04/08/XSS/</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<p><img src="/../images/XSS.jpg" alt="alt text"></p><h1 id="Cross-Site-Scripting-XSS"><a href="#Cross-Site-Scripting-XSS" class="headerlink" title="Cross-Site Scripting (XSS)"></a>Cross-Site Scripting (XSS)</h1><p>Cross-Site scripting (XSS) is a client-side web vulnerability that allows attackers to inject malicious scripts into web pages.</p><p>This vulnerability is typically caused by a lack of input sanitization&#x2F;validation in web applications</p><p>Attackers leverage XSS vulnerabilities to inject malicious code into web applications. Because XSS is a client side vulnerability, these scripts are executed by the victims browser.</p><p>There are 3 types of Cross-Site Scripting(XSS) attacks :</p><ul><li><p>Reflected XSS</p></li><li><p>Stored XSS</p></li><li><p>DOM-Based XSS</p></li></ul><h2 id="Reflected-XSS"><a href="#Reflected-XSS" class="headerlink" title="Reflected XSS"></a>Reflected XSS</h2><p>Reflected&#x2F;non-persistent cross-site scripting is the most common form of<br>XSS and involves tricking a victim into clicking a specially crafted link (with an XSS payload) to the vulnerable website.</p><p>When the victim clicks on the link the website includes the XSS payload as part of the response back to the victims browser, where the payload is executed.</p><p>Exemple of a simple payload :</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;alert(<span class="string">&quot;XSS&quot;</span>)&lt;/script&gt;</span><br></pre></td></tr></table></figure><p>With this test we can also find out if the Web Application has some kind of filtering or not.</p><p>While this serves as just one among various XSS tests, it remains imperative to conduct thorough assessments for comprehensive security evaluation.</p><h2 id="Stored-XSS"><a href="#Stored-XSS" class="headerlink" title="Stored XSS"></a>Stored XSS</h2><p>Stored&#x2F;persistent cross-site scripting is a vulnerability where an attacker is able to inject Javascript code into a web application’s database or source code via an input that is not sanitised.</p><p>For example, if an attacker is able to inject a malicious XSS payload in to a webpage on a website without proper sanitisation  the XSS payload injected in to the webpage will be executed by the browser of anyone that visits that webpage.</p><p>Here’s a simple example of a Stored XSS attack:</p><p>Let’s consider a website that allows users to post comments. The website doesn’t properly sanitize user input, so a malicious user could craft a comment containing JavaScript code. For instance:</p>]]></content>
       
       
+      
+        <tags>
+            
+            <tag> WEB </tag>
+            
+        </tags>
       
     </entry>
     
