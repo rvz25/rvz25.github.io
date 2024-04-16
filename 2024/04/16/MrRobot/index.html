@@ -20,33 +20,9 @@ It seems like its a list.."><meta name="generator" content="Hexo 7.1.1"></head><
 <p><img src="/../images/3.png" alt="alt text"></p>
 <p><img src="/../images/4.png" alt="alt text"></p>
 <p>It seems like its a list of passwords. </p>
-<h3 id="NMAP-Scanning"><a href="#NMAP-Scanning" class="headerlink" title="NMAP Scanning"></a>NMAP Scanning</h3><p>( sudo nmap -p- -sS –min-rate 5000 –open -T5 -vvv -Pn 10.10.50.127 )</p>
-<div style="background-color: ##28282B; padding: 10px; border: 1px solid #ccc;">
-┌──(kali㉿kali)-[~/…/Workspace/TryHackMe/Boxes/mrrobot]
-└─$  sudo nmap -p- -sS --min-rate 5000 --open -T5 -vvv -Pn 10.10.50.127
-[sudo] password for kali: 
-Host discovery disabled (-Pn). All addresses will be marked 'up' and scan times may be slower.
-Starting Nmap 7.94SVN ( https://nmap.org ) at 2024-04-16 14:00 EDT
-Initiating Parallel DNS resolution of 1 host. at 14:00
-Completed Parallel DNS resolution of 1 host. at 14:00, 0.04s elapsed
-DNS resolution of 1 IPs took 0.04s. Mode: Async [#: 1, OK: 0, NX: 1, DR: 0, SF: 0, TR: 1, CN: 0]
-Initiating SYN Stealth Scan at 14:00
-Scanning 10.10.50.127 [65535 ports]
-Discovered open port 443/tcp on 10.10.50.127
-Discovered open port 80/tcp on 10.10.50.127
-Completed SYN Stealth Scan at 14:00, 26.58s elapsed (65535 total ports)
-Nmap scan report for 10.10.50.127
-Host is up, received user-set (0.086s latency).
-Scanned at 2024-04-16 14:00:06 EDT for 27s
-Not shown: 65532 filtered tcp ports (no-response), 1 closed tcp port (reset)
-Some closed ports may be reported as filtered due to --defeat-rst-ratelimit
-PORT    STATE SERVICE REASON
-80/tcp  open  http    syn-ack ttl 63
-443/tcp open  https   syn-ack ttl 63
-
+<h3 id="NMAP-Scanning"><a href="#NMAP-Scanning" class="headerlink" title="NMAP Scanning"></a>NMAP Scanning</h3><p><code>( sudo nmap -p- -sS --min-rate 5000 --open -T5 -vvv -Pn 10.10.50.127 )</code></p>
+<p>┌──(kali㉿kali)-[~&#x2F;…&#x2F;Workspace&#x2F;TryHackMe&#x2F;Boxes&#x2F;mrrobot]<br>└─$  sudo nmap -p- -sS –min-rate 5000 –open -T5 -vvv -Pn 10.10.50.127<br>[sudo] password for kali:<br>Host discovery disabled (-Pn). All addresses will be marked ‘up’ and scan times may be slower.<br>Starting Nmap 7.94SVN ( <a target="_blank" rel="noopener" href="https://nmap.org/">https://nmap.org</a> ) at 2024-04-16 14:00 EDT<br>Initiating Parallel DNS resolution of 1 host. at 14:00<br>Completed Parallel DNS resolution of 1 host. at 14:00, 0.04s elapsed<br>DNS resolution of 1 IPs took 0.04s. Mode: Async [#: 1, OK: 0, NX: 1, DR: 0, SF: 0, TR: 1, CN: 0]<br>Initiating SYN Stealth Scan at 14:00<br>Scanning 10.10.50.127 [65535 ports]<br>Discovered open port 443&#x2F;tcp on 10.10.50.127<br>Discovered open port 80&#x2F;tcp on 10.10.50.127<br>Completed SYN Stealth Scan at 14:00, 26.58s elapsed (65535 total ports)<br>Nmap scan report for 10.10.50.127<br>Host is up, received user-set (0.086s latency).<br>Scanned at 2024-04-16 14:00:06 EDT for 27s<br>Not shown: 65532 filtered tcp ports (no-response), 1 closed tcp port (reset)<br>Some closed ports may be reported as filtered due to –defeat-rst-ratelimit<br>PORT    STATE SERVICE REASON<br>80&#x2F;tcp  open  http    syn-ack ttl 63<br>443&#x2F;tcp open  https   syn-ack ttl 63</p>
 <p>Read data files from: &#x2F;usr&#x2F;bin&#x2F;..&#x2F;share&#x2F;nmap<br>Nmap done: 1 IP address (1 host up) scanned in 26.70 seconds<br>           Raw packets sent: 131086 (5.768MB) | Rcvd: 22 (964B</p>
-</div>
-
 <p>Full NMAP Scanning : </p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">┌──(kali㉿kali)-[~/…/Workspace/TryHackMe/Boxes/mrrobot]</span><br><span class="line">└─$ nmap -A -sC -sV -p80,443 10.10.50.127 -Pn</span><br><span class="line">Starting Nmap 7.94SVN ( https://nmap.org ) at 2024-04-16 14:07 EDT</span><br><span class="line">Nmap scan report <span class="keyword">for</span> 10.10.50.127</span><br><span class="line">Host is up (0.063s latency).</span><br><span class="line"></span><br><span class="line">PORT    STATE SERVICE  VERSION</span><br><span class="line">80/tcp  open  http     Apache httpd</span><br><span class="line">|_http-server-header: Apache</span><br><span class="line">|_http-title: Site doesn<span class="string">&#x27;t have a title (text/html).</span></span><br><span class="line"><span class="string">443/tcp open  ssl/http Apache httpd</span></span><br><span class="line"><span class="string">| ssl-cert: Subject: commonName=www.example.com</span></span><br><span class="line"><span class="string">| Not valid before: 2015-09-16T10:45:03</span></span><br><span class="line"><span class="string">|_Not valid after:  2025-09-13T10:45:03</span></span><br><span class="line"><span class="string">|_http-title: Site doesn&#x27;</span>t have a title (text/html).</span><br><span class="line">|_http-server-header: Apache</span><br><span class="line"></span><br><span class="line">Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .</span><br><span class="line">Nmap <span class="keyword">done</span>: 1 IP address (1 host up) scanned <span class="keyword">in</span> 18.77 seconds</span><br></pre></td></tr></table></figure>
 
