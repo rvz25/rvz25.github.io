@@ -29,9 +29,7 @@ SELECT * FROM users WHERE username = '' OR 1=1 --' AND password = 'input_passwor
 
 <p>This query always returns true, allowing the attacker to log in without a valid password.</p>
 <h3 id="Blind-SQL-Injection"><a href="#Blind-SQL-Injection" class="headerlink" title="Blind SQL Injection:"></a>Blind SQL Injection:</h3><p>Suppose there’s a login form on a website where users enter their username and password. The website’s login process checks the entered credentials against a database using an SQL query like this:</p>
-<code language="bash">
-SELECT * FROM users WHERE username = 'input_username' AND password = 'input_password';
-</code>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM users WHERE username = &#x27;input_username&#x27; AND password = &#x27;input_password&#x27;;</span><br></pre></td></tr></table></figure>
 
 <p>Now, let’s say an attacker wants to bypass the login and gain unauthorized access to the website’s backend. They notice that the website is vulnerable to Blind SQL Injection. Instead of directly viewing the results of their injected SQL queries, the attacker will rely on the application’s behavior to infer information indirectly.</p>
 <p>The attacker inputs the following string into the username field of the login form:</p>
