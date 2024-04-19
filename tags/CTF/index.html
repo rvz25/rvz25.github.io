@@ -9,7 +9,17 @@ Let’s try a default XSS :
 Not working , robots txt maybe?
 
 Nope.
-NMAP Scanning :┌──(kali㉿kali)-[~&amp;#x2F;…&amp;#x2F;Workspace&amp;#x2F;TryHackMe&amp;#x2F;Boxes&amp;#x2F;Lesson_Learned?]└─$ sudo nmap -p- -sS –min-rate 5000 –open -..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2024/04/19/LessonLearned/">Read more</a></section></article></section><aside class="column is-hidden-mobile is-4-tablet is-3-widescreen"><div style="position: sticky; top: 50px;"><main class="aside-card-container tag-widget is-in-tag-page"><h3>Tags</h3><section><a href="/tags/WEB"><span class="tag post-item-tag" style="margin-bottom: 5px;">WEB</span></a><a href="/tags/CTF;%20Medium"><span class="tag post-item-tag" style="margin-bottom: 5px;">CTF; Medium</span></a><a href="/tags/ROCSC;%20Easy"><span class="tag post-item-tag" style="margin-bottom: 5px;">ROCSC; Easy</span></a><a href="/tags/CTF"><span class="tag post-item-tag" style="margin-bottom: 5px;">CTF</span></a></section></main></div></aside></div></article><script>$claudia.fadeInImage(null, $claudia.blurBackdropImg)
+NMAP Scanning :┌──(kali㉿kali)-[~&amp;#x2F;…&amp;#x2F;Workspace&amp;#x2F;TryHackMe&amp;#x2F;Boxes&amp;#x2F;Lesson_Learned?]└─$ sudo nmap -p- -sS –min-rate 5000 –open -..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2024/04/19/LessonLearned/">Read more</a></section></article><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="/../images/mrrobot.jpg" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/2024/04/16/MrRobot/"><img class="post-cover-img js-img-fadeIn" src="/../images/mrrobot.jpg" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><header><a href="/tags/CTF"><i class="tag post-item-tag">CTF</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2024/04/16/MrRobot/">Mr Robot</a></h2><time class="has-text-grey" datetime="2024-04-16T20:38:28.000Z">2024-04-16</time><p class="is-flex-grow-2 mt-2">
+Head into the IP Address given :10.10.50.127
+
+After trying all those commands , i didn’t find anything interesting . First thing i got in my mind is to go and see if we find something in /robots.txt :
+
+We find key-1-of-3.txt let’s head into that :
+We got the flag : 073403c8a58a1f80d943455fb30724b9
+Let’s see fsociety.dic aswell :
+
+
+It seems like this is a ..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2024/04/16/MrRobot/">Read more</a></section></article></section><aside class="column is-hidden-mobile is-4-tablet is-3-widescreen"><div style="position: sticky; top: 50px;"><main class="aside-card-container tag-widget is-in-tag-page"><h3>Tags</h3><section><a href="/tags/CTF"><span class="tag post-item-tag" style="margin-bottom: 5px;">CTF</span></a><a href="/tags/WEB"><span class="tag post-item-tag" style="margin-bottom: 5px;">WEB</span></a><a href="/tags/ROCSC"><span class="tag post-item-tag" style="margin-bottom: 5px;">ROCSC</span></a></section></main></div></aside></div></article><script>$claudia.fadeInImage(null, $claudia.blurBackdropImg)
 
 window.addEventListener('resize', $claudia.throttle(function () {
     var images = document.querySelectorAll('.js-img-fadeIn')
