@@ -16,6 +16,8 @@
             
             <tag> CTF </tag>
             
+            <tag> Medium </tag>
+            
         </tags>
       
     </entry>
@@ -113,6 +115,8 @@
       
         <tags>
             
+            <tag> Easy </tag>
+            
             <tag> ROCSC </tag>
             
         </tags>
@@ -131,6 +135,8 @@
       
       
         <tags>
+            
+            <tag> Easy </tag>
             
             <tag> ROCSC </tag>
             
