@@ -15,7 +15,19 @@ KEYS *
 
 GET flag :
 
-</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2024/05/04/Redeemer/">Read more</a></section></article><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="/../fawn_images/b64f85071e626e4cc2272d54332e4131.webp" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/2024/05/03/fawn/"><img class="post-cover-img js-img-fadeIn" src="/../fawn_images/b64f85071e626e4cc2272d54332e4131.webp" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><header><a href="/tags/HackTheBox"><i class="tag post-item-tag">HackTheBox</i></a><a href="/tags/Very%20Easy"><i class="tag post-item-tag">Very Easy</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2024/05/03/fawn/">Fawn</a></h2><time class="has-text-grey" datetime="2024-05-03T19:16:40.000Z">2024-05-03</time><p class="is-flex-grow-2 mt-2">
+</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2024/05/04/Redeemer/">Read more</a></section></article><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="/../dancing_images/ce52eadd09ff5a28a1eea8c65d6683a9.png" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/2024/05/03/Dancing/"><img class="post-cover-img js-img-fadeIn" src="/../dancing_images/ce52eadd09ff5a28a1eea8c65d6683a9.png" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><header><a href="/tags/HackTheBox"><i class="tag post-item-tag">HackTheBox</i></a><a href="/tags/Very%20Easy"><i class="tag post-item-tag">Very Easy</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2024/05/03/Dancing/">Dancing</a></h2><time class="has-text-grey" datetime="2024-05-03T19:27:18.000Z">2024-05-03</time><p class="is-flex-grow-2 mt-2">
+DancingMachine IP : 10.129.26.54
+NMAP Scanning :
+sudo nmap -p- -sS –min-rate 5000 –open -T5 -vvv -Pn 10.129.26.54
+
+-p135,139,445,5985,47001,49664,49665,49666,49667,49668,49669
+Full NMAP Scanning: 
+nmap -A -sC -sV -p135,139,445,5985,47001,49664,49665,49666,49667,49668,49669 10.129.26.54 -Pn
+
+smbclient
+smbclient -L \\10.129.26.54\public 
+
+Access WorkShares ..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2024/05/03/Dancing/">Read more</a></section></article><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="/../fawn_images/b64f85071e626e4cc2272d54332e4131.webp" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/2024/05/03/fawn/"><img class="post-cover-img js-img-fadeIn" src="/../fawn_images/b64f85071e626e4cc2272d54332e4131.webp" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><header><a href="/tags/HackTheBox"><i class="tag post-item-tag">HackTheBox</i></a><a href="/tags/Very%20Easy"><i class="tag post-item-tag">Very Easy</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2024/05/03/fawn/">Fawn</a></h2><time class="has-text-grey" datetime="2024-05-03T19:16:40.000Z">2024-05-03</time><p class="is-flex-grow-2 mt-2">
 FawnMachine IP : 10.129.159.51
 NMAP Scanning :
 sudo nmap -p- -sS –min-rate 5000 –open -T5 -vvv -Pn 10.129.159.51
