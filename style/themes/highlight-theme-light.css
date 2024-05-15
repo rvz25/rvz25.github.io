@@ -57,13 +57,19 @@
   color: #7928a1;
 }
 
+/* Custom CSS for code blocks */
 .hljs {
   display: block;
   overflow-x: auto;
   background: #fefefe;
   color: #545454;
   padding: 0.5em;
+  margin-top: 20px; /* Adjust this value */
+  margin-bottom: 20px; /* Adjust this value */
+  margin-left: auto;
+  margin-right: auto;
 }
+
 
 .hljs-emphasis {
   font-style: italic;
