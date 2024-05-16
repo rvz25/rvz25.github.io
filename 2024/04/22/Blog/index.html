@@ -5,21 +5,27 @@ EnumerationFirstly we need to add the IP Address to /etc/hosts
 sudo nano /etc/hosts
 
 NMAP Scanning :
-┌──(kali㉿kali)-[~/…/Workspace/TryHackMe/Boxes/Blog]└─$ sudo nmap -p- -sS --min-rate 5000 --open -T5 -vvv -Pn 10.10.155.138
+sudo nmap -p- -sS --min-rate 5000 --open -T5 -vvv -Pn 10.10.155.138
 
 
 FULL NMAP Scanning : 
-┌──(kali㉿kali)-[~/…/Workspace/TryHackMe/Boxes/Blog]└─$ sudo nma.."><meta name="generator" content="Hexo 7.1.1"></head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">Razvan's blog</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><div class="is-full-height" id="postTopic"><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Blog</p><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Click back to the top</p></div></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></header><main><main class="container is-max-widescreen content section post-page pt-4 px-4"><div class="columns is-flex-desktop is-justify-content-center is-flex-direction-row-reverse"><div class="column is-3 is-hidden-mobile"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Enumeration"><span class="toc-text">Enumeration</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Exploitation"><span class="toc-text">Exploitation</span></a></li></ol></div><div class="column is-9"><header class="my-4"><a href="/tags/TryHackMe"><i class="tag post-item-tag">TryHackMe</i></a><a href="/tags/CTF"><i class="tag post-item-tag">CTF</i></a><a href="/tags/Medium"><i class="tag post-item-tag">Medium</i></a></header><h1 class="mt-0 mb-1 is-family-serif" id="postTitle">Blog</h1><time class="has-text-grey" datetime="2024-04-22T13:44:05.000Z">2024-04-22</time><article class="mt-2 post-content"><p><img src="/../blog_images/wordpress-581849_1280.webp" alt="alt text"></p>
+sudo nmap -A -sC -sV -p80,445,22,139 10.10.155.138 -Pn
+
+
+Let’s check smb :
+
+
+These seem like some images .jpg non inte.."><meta name="generator" content="Hexo 7.1.1"></head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">Razvan's blog</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><div class="is-full-height" id="postTopic"><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Blog</p><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Click back to the top</p></div></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></header><main><main class="container is-max-widescreen content section post-page pt-4 px-4"><div class="columns is-flex-desktop is-justify-content-center is-flex-direction-row-reverse"><div class="column is-3 is-hidden-mobile"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Enumeration"><span class="toc-text">Enumeration</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Exploitation"><span class="toc-text">Exploitation</span></a></li></ol></div><div class="column is-9"><header class="my-4"><a href="/tags/TryHackMe"><i class="tag post-item-tag">TryHackMe</i></a><a href="/tags/CTF"><i class="tag post-item-tag">CTF</i></a><a href="/tags/Medium"><i class="tag post-item-tag">Medium</i></a></header><h1 class="mt-0 mb-1 is-family-serif" id="postTitle">Blog</h1><time class="has-text-grey" datetime="2024-04-22T13:44:05.000Z">2024-04-22</time><article class="mt-2 post-content"><p><img src="/../blog_images/wordpress-581849_1280.webp" alt="alt text"></p>
 <p>Room Link: <a target="_blank" rel="noopener" href="https://tryhackme.com/r/room/blog">https://tryhackme.com/r/room/blog</a></p>
 <h2 id="Enumeration"><a href="#Enumeration" class="headerlink" title="Enumeration"></a>Enumeration</h2><p>Firstly we need to add the IP Address to <code>/etc/hosts</code> </p>
 <p><code>sudo nano /etc/hosts</code></p>
 <p><img src="/../blog_images/Screenshot%202024-04-22%20at%2016.53.23.png" alt="alt text"></p>
 <p>NMAP Scanning :</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">┌──(kali㉿kali)-[~/…/Workspace/TryHackMe/Boxes/Blog]<br>└─$ sudo nmap -p- -sS --min-rate 5000 --open -T5 -vvv -Pn 10.10.155.138<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">sudo nmap -p- -sS --min-rate 5000 --open -T5 -vvv -Pn 10.10.155.138<br></code></pre></td></tr></table></figure>
 
 <p><img src="/../blog_images/Screenshot%202024-04-22%20at%2016.53.06.png" alt="alt text"></p>
 <p>FULL NMAP Scanning : </p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">┌──(kali㉿kali)-[~/…/Workspace/TryHackMe/Boxes/Blog]<br>└─$ sudo nmap -A -sC -sV -p80,445,22,139 10.10.155.138 -Pn<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">sudo nmap -A -sC -sV -p80,445,22,139 10.10.155.138 -Pn<br></code></pre></td></tr></table></figure>
 
 <p><img src="/../blog_images/Screenshot%202024-04-22%20at%2016.53.15.png" alt="alt text"></p>
 <p>Let’s check smb :</p>
@@ -27,7 +33,7 @@ FULL NMAP Scanning :
 <p><img src="/../blog_images/Screenshot%202024-04-22%20at%2016.53.54.png" alt="alt text"></p>
 <p><img src="/../blog_images/Screenshot%202024-04-22%20at%2017.19.50.png" alt="alt text"><br>These seem like some images .jpg non interesting.</p>
 <p>Directory Busting :</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">┌──(kali㉿kali)-[~/…/Workspace/TryHackMe/Boxes/Blog]<br>└─$ gobuster <span class="hljs-built_in">dir</span> -u [http://10.10.155.138](http://10.10.155.138/) -w /usr/share/wordlists/dirbuster/directory-list-lowercase-2.3-medium.txt<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">gobuster <span class="hljs-built_in">dir</span> -u [http://10.10.155.138](http://10.10.155.138/) -w /usr/share/wordlists/dirbuster/directory-list-lowercase-2.3-medium.txt<br></code></pre></td></tr></table></figure>
 
 <p><img src="/../blog_images/Screenshot%202024-04-22%20at%2016.54.11.png" alt="alt text"></p>
 <p>Gobuster found some interesting directories, check for <code>/rss</code></p>
