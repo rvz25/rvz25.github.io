@@ -7,7 +7,7 @@ Robots.txtRobots.txt is a text file webmasters create to instruct web robots (ty
 <h1 id="Walktrough"><a href="#Walktrough" class="headerlink" title="Walktrough"></a>Walktrough</h1><p>First we paste the address we got in our browser and this is what we get :  </p>
 <p><img src="/../images/image.png" alt="alt text"></p>
 <p>With a tool named <code>nuclei</code> we found a directory <code>robots.txt</code> :</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">└─<span class="variable">$</span> nuclei <span class="literal">-u</span> http://<span class="number">34.159</span>.<span class="number">76.30</span>:<span class="number">31714</span>/</span><br></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><code class="hljs powershell">└─<span class="hljs-variable">$</span> nuclei <span class="hljs-literal">-u</span> http://<span class="hljs-number">34.159</span>.<span class="hljs-number">76.30</span>:<span class="hljs-number">31714</span>/<br></code></pre></td></tr></table></figure>
 
 <p>Found:<br><code>[robots-txt-endpoint] [http] [info] http://34.159.76.30:31714/robots.txt</code></p>
 <p>Let’s try to go into <code>/robots.txt</code> :</p>

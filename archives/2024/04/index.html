@@ -3,23 +3,23 @@
 Room Link: https://tryhackme.com/r/room/basicpentestingjt
 Basic PentestingNMAP Scanning : (sudo nmap -p- -sS –min-rate 5000 –open -T5 -vvv -Pn 10.10.25.177 | tee nmap&amp;#x2F;10.10.25.177_nmap.txt)
 
-1234567PORT     STATE SERVICE      REASON22/tcp   open  ssh          syn-ack ttl 6380/tcp   open  http         syn-ack ttl 63139/tcp  open  netbios-ssn  syn-ack ..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2024/04/23/Basic_Pentesting/">Read more</a></section></article><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="/../blog_images/618f1cc93596ff4082250bce9d869767.png" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/2024/04/22/Blog/"><img class="post-cover-img js-img-fadeIn" src="/../blog_images/618f1cc93596ff4082250bce9d869767.png" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><header><a href="/tags/TryHackMe"><i class="tag post-item-tag">TryHackMe</i></a><a href="/tags/CTF"><i class="tag post-item-tag">CTF</i></a><a href="/tags/Medium"><i class="tag post-item-tag">Medium</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2024/04/22/Blog/">Blog</a></h2><time class="has-text-grey" datetime="2024-04-22T13:44:05.000Z">2024-04-22</time><p class="is-flex-grow-2 mt-2">
+PORT     STATE SERVICE      REASON22/tcp   open  ssh          syn-ack ttl 6380/tcp   open  http         syn-ack ttl 63139/tcp  open  netbios-ssn  syn-ack ttl 634..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2024/04/23/Basic_Pentesting/">Read more</a></section></article><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="/../blog_images/618f1cc93596ff4082250bce9d869767.png" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/2024/04/22/Blog/"><img class="post-cover-img js-img-fadeIn" src="/../blog_images/618f1cc93596ff4082250bce9d869767.png" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><header><a href="/tags/TryHackMe"><i class="tag post-item-tag">TryHackMe</i></a><a href="/tags/CTF"><i class="tag post-item-tag">CTF</i></a><a href="/tags/Medium"><i class="tag post-item-tag">Medium</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2024/04/22/Blog/">Blog</a></h2><time class="has-text-grey" datetime="2024-04-22T13:44:05.000Z">2024-04-22</time><p class="is-flex-grow-2 mt-2">
 Room Link: https://tryhackme.com/r/room/blog
 EnumerationFirstly we need to add the IP Address to /etc/hosts 
 sudo nano /etc/hosts
 
 NMAP Scanning :
-1sudo nmap -p- -sS --min-rate 5000 --open -T5 -vvv -Pn 10.10.155.138
+sudo nmap -p- -sS --min-rate 5000 --open -T5 -vvv -Pn 10.10.155.138
 
 
 FULL NMAP Scanning : 
-1sudo nmap -A -sC -sV -p80,445,22,139 10.10.155.138 -Pn
+sudo nmap -A -sC -sV -p80,445,22,139 10.10.155.138 -Pn
 
 
 Let’s check smb :
 
 
-These seem like some images .jpg non in..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2024/04/22/Blog/">Read more</a></section></article><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="/../images/maxresdefault.jpg" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/2024/04/19/LessonLearned/"><img class="post-cover-img js-img-fadeIn" src="/../images/maxresdefault.jpg" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><header><a href="/tags/TryHackMe"><i class="tag post-item-tag">TryHackMe</i></a><a href="/tags/CTF"><i class="tag post-item-tag">CTF</i></a><a href="/tags/Easy"><i class="tag post-item-tag">Easy</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2024/04/19/LessonLearned/">Lesson Learned?</a></h2><time class="has-text-grey" datetime="2024-04-19T17:33:55.000Z">2024-04-19</time><p class="is-flex-grow-2 mt-2">
+These seem like some images .jpg non inte..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2024/04/22/Blog/">Read more</a></section></article><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="/../images/maxresdefault.jpg" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/2024/04/19/LessonLearned/"><img class="post-cover-img js-img-fadeIn" src="/../images/maxresdefault.jpg" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><header><a href="/tags/TryHackMe"><i class="tag post-item-tag">TryHackMe</i></a><a href="/tags/CTF"><i class="tag post-item-tag">CTF</i></a><a href="/tags/Easy"><i class="tag post-item-tag">Easy</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2024/04/19/LessonLearned/">Lesson Learned?</a></h2><time class="has-text-grey" datetime="2024-04-19T17:33:55.000Z">2024-04-19</time><p class="is-flex-grow-2 mt-2">
 Room link : https://tryhackme.com/r/room/lessonlearned
 Lesson Learned?IP Address  :(10.10.63.208)
 We have a web application with a Login form :
@@ -29,7 +29,7 @@ Let’s try a default XSS :
 Not working , robots txt maybe?
 
 Nope.
-NMAP Scanning :1sudo nmap -p- -sS --min-rate 5000 --open -T5 -vvv -Pn 10.10.63.208
+NMAP Scanning :sudo nmap -p- -sS --min-rate 5000 --open -T5 -vvv -Pn 10.10.63.208
 
 Ports open : 
 
@@ -37,7 +37,7 @@ Ports open :
 80 http
 
 Full NMAP Scanning :
-1nmap -A -..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2024/04/19/LessonLearned/">Read more</a></section></article><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="/../images/7a8797ae59733f2a72f0e8a8748be128.jpeg" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/2024/04/16/MrRobot/"><img class="post-cover-img js-img-fadeIn" src="/../images/7a8797ae59733f2a72f0e8a8748be128.jpeg" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><header><a href="/tags/TryHackMe"><i class="tag post-item-tag">TryHackMe</i></a><a href="/tags/CTF"><i class="tag post-item-tag">CTF</i></a><a href="/tags/Medium"><i class="tag post-item-tag">Medium</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2024/04/16/MrRobot/">Mr Robot</a></h2><time class="has-text-grey" datetime="2024-04-16T20:38:28.000Z">2024-04-16</time><p class="is-flex-grow-2 mt-2">
+nmap -A -sC..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2024/04/19/LessonLearned/">Read more</a></section></article><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="/../images/7a8797ae59733f2a72f0e8a8748be128.jpeg" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/2024/04/16/MrRobot/"><img class="post-cover-img js-img-fadeIn" src="/../images/7a8797ae59733f2a72f0e8a8748be128.jpeg" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><header><a href="/tags/TryHackMe"><i class="tag post-item-tag">TryHackMe</i></a><a href="/tags/CTF"><i class="tag post-item-tag">CTF</i></a><a href="/tags/Medium"><i class="tag post-item-tag">Medium</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2024/04/16/MrRobot/">Mr Robot</a></h2><time class="has-text-grey" datetime="2024-04-16T20:38:28.000Z">2024-04-16</time><p class="is-flex-grow-2 mt-2">
 Head into the IP Address given :10.10.50.127
 
 After trying all those commands , i didn’t find anything interesting . First thing i got in my mind is to go and see if we find something in /robots.txt :
