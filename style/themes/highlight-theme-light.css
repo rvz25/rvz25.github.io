@@ -60,16 +60,29 @@
 /* Custom CSS for code blocks */
 .hljs {
   display: block;
-  overflow-x: auto;
+  overflow-x: auto; /* Enable horizontal scrolling */
   background: #fefefe;
   color: #545454;
   padding: 0.5em;
-  margin-top: 20px; /* Adjust this value */
-  margin-bottom: 20px; /* Adjust this value */
-  margin-left: auto;
-  margin-right: auto;
+  margin: 20px auto; /* Center the code block */
+  max-width: 100%; /* Ensure the code block doesn't exceed the container's width */
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+  white-space: pre; /* Preserve whitespace */
 }
 
+/* Optional: Ensure pre elements also support overflow */
+pre {
+  white-space: pre-wrap; /* Wrap long lines */
+  word-wrap: break-word; /* Break long words */
+  overflow-x: auto; /* Enable horizontal scrolling for pre elements */
+  padding: 10px;
+  background: #f7f7f7;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin: 20px auto;
+  max-width: 100%;
+  box-sizing: border-box;
+}
 
 .hljs-emphasis {
   font-style: italic;
