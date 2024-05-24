@@ -21,11 +21,11 @@ These seem like some images .jpg non inte.."><meta name="generator" content="Hex
 <p><code>sudo nano /etc/hosts</code></p>
 <p><img src="/../blog_images/Screenshot%202024-04-22%20at%2016.53.23.png" alt="alt text"></p>
 <p>NMAP Scanning :</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">sudo nmap -p- -sS --min-rate 5000 --open -T5 -vvv -Pn 10.10.155.138<br></code></pre></td></tr></table></figure>
+<pre><code class="hljs bash">sudo nmap -p- -sS --min-rate 5000 --open -T5 -vvv -Pn 10.10.155.138</code></pre>
 
 <p><img src="/../blog_images/Screenshot%202024-04-22%20at%2016.53.06.png" alt="alt text"></p>
 <p>FULL NMAP Scanning : </p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">sudo nmap -A -sC -sV -p80,445,22,139 10.10.155.138 -Pn<br></code></pre></td></tr></table></figure>
+<pre><code class="hljs bash">sudo nmap -A -sC -sV -p80,445,22,139 10.10.155.138 -Pn</code></pre>
 
 <p><img src="/../blog_images/Screenshot%202024-04-22%20at%2016.53.15.png" alt="alt text"></p>
 <p>Let’s check smb :</p>
@@ -33,7 +33,7 @@ These seem like some images .jpg non inte.."><meta name="generator" content="Hex
 <p><img src="/../blog_images/Screenshot%202024-04-22%20at%2016.53.54.png" alt="alt text"></p>
 <p><img src="/../blog_images/Screenshot%202024-04-22%20at%2017.19.50.png" alt="alt text"><br>These seem like some images .jpg non interesting.</p>
 <p>Directory Busting :</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">gobuster <span class="hljs-built_in">dir</span> -u [http://10.10.155.138](http://10.10.155.138/) -w /usr/share/wordlists/dirbuster/directory-list-lowercase-2.3-medium.txt<br></code></pre></td></tr></table></figure>
+<pre><code class="hljs bash">gobuster <span class="hljs-built_in">dir</span> -u [http://10.10.155.138](http://10.10.155.138/) -w /usr/share/wordlists/dirbuster/directory-list-lowercase-2.3-medium.txt</code></pre>
 
 <p><img src="/../blog_images/Screenshot%202024-04-22%20at%2016.54.11.png" alt="alt text"></p>
 <p>Gobuster found some interesting directories, check for <code>/rss</code></p>
@@ -46,7 +46,8 @@ These seem like some images .jpg non inte.."><meta name="generator" content="Hex
 <p>Let’s check out &#x2F;login </p>
 <p><img src="/../blog_images/Screenshot%202024-04-22%20at%2016.54.49.png" alt="alt text"></p>
 <p>Since we have Wordpress we can use WPScan:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">┌──(kali㉿kali)-[~/…/Workspace/TryHackMe/Boxes/Blog]<br>└─$ wpscan --url http://blog.thm --enumerate ap,dbe,cb,u --detection-mode aggressive<br></code></pre></td></tr></table></figure>
+<pre><code class="hljs bash">┌──(kali㉿kali)-[~/…/Workspace/TryHackMe/Boxes/Blog]
+└─$ wpscan --url http://blog.thm --enumerate ap,dbe,cb,u --detection-mode aggressive</code></pre>
 
 
 <p><img src="/../blog_images/Screenshot%202024-04-22%20at%2016.54.56.png" alt="alt text"></p>
